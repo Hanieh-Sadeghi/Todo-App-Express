@@ -4,16 +4,13 @@ JavaScript is pretty amazing. JavaScript app will allow us to add tasks, to edit
 ## Usage
 
 1. Add a task by typing it in the input field.
-
 2. Press the "Enter" key or click the "Add Task" button to add the task to the list.
-
 3. Click on a task to mark it as completed.
-
 4. Click the "Delete" button next to a task to remove it from the list.
 
 <p>
  <img src="./public/Img/1.png" width="350" height="200" />
- <img src="./public/Img/2.png" width="300" height="100" />
+ <img src="./public/Img/2.png" width="150" height="100" />
 </p>
 
 ## Actions
@@ -35,19 +32,6 @@ JavaScript is pretty amazing. JavaScript app will allow us to add tasks, to edit
  <img src="./public/Img/4.png" width="300" height="100" />
 </p>
 
-### Installation
-
-  <li>
-        <p>Clone the repository:</p>
-        <pre><code>https://github.com/Hanieh-Sadeghi/ToDo-AppJavaScript-And-Local-Storage-<code></pre>
-    </li>
-## Usage
-
-1. Type a task in the input field.
-2. Click the "Add Task" button to add the task to the list.
-3. Click on a task to mark it as completed.
-4. Click the "Delete" button next to a task to remove it from the list.
-
 ## Local Storage
 
 The app uses client-side storage to automatically store the latest state of the application. So, even if you close the tab or refresh the page, your tasks will be saved.
@@ -56,12 +40,20 @@ The app uses client-side storage to automatically store the latest state of the 
  <img src="./public/Img/5.png" width="350" height="200" />
  <img src="./public/Img/6.png" width="300" height="100" />
 </p>
+
 ## Technologies Used
 
 - HTML
 - CSS
 - JavaScript
-- Json
+- JSON
+
+### Installation
+
+  <li>
+        <p>Clone the repository:</p>
+        <pre><code>https://github.com/Hanieh-Sadeghi/ToDo-AppJavaScript-And-Local-Storage-<code></pre>
+    </li>
 
 ## Contributing
 
