@@ -65,3 +65,13 @@ The app uses client-side storage to automatically store the latest state of the 
     </li>
 </ol>
 
+<h2>Contact</h2>
+<p>
+    If you have any questions, suggestions, or feedback regarding this project,
+    please feel free to reach out:
+</p>
+
+<p>
+    Thank you for using the Todo-App! We hope it helps you stay organized and
+    efficient in managing your tasks.
+</p>
