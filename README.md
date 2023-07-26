@@ -10,7 +10,7 @@ JavaScript is pretty amazing. JavaScript app will allow us to add tasks, to edit
 
 <p>
  <img src="./public/Img/1.png" width="350" height="200" />
- <img src="./public/Img/2.png" width="100" height="200" />
+ <img src="./public/Img/2.png" width="120" height="200" />
 </p>
 
 ## Actions
