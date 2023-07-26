@@ -48,9 +48,20 @@ The app uses client-side storage to automatically store the latest state of the 
 - JavaScript
 - JSON
 
-### Installation
-
-        Clone the repository:
-        <pre><code>https://github.com/Hanieh-Sadeghi/ToDo-AppJavaScript-And-Local-Storage-<code></pre>
-    
+<h2>Installation</h2>
+<p>To use this Art Canvas, follow the instructions below:</p>
+<ol>
+    <li>
+        <p>Clone the repository:</p>
+        <pre><code> https://github.com/Hanieh-Sadeghi/ToDo-AppJavaScript-And-Local-Storage-.git
+</code></pre>
+    </li>
+    <li><p>Open the project folder in your preferred code editor.</p></li>
+    <li>
+        <p>
+            Launch the application by opening the
+            <code>index.html</code> file in a web browser.
+        </p>
+    </li>
+</ol>
 
