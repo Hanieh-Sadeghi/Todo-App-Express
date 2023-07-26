@@ -29,7 +29,7 @@ JavaScript is pretty amazing. JavaScript app will allow us to add tasks, to edit
 
 <p>
  <img src="./public/Img/3.png" width="150" height="200" />
- <img src="./public/Img/4.png" width="100" height="200" />
+ <img src="./public/Img/4.png" width="150" height="200" />
 </p>
 
 ## Local Storage
@@ -37,8 +37,8 @@ JavaScript is pretty amazing. JavaScript app will allow us to add tasks, to edit
 The app uses client-side storage to automatically store the latest state of the application. So, even if you close the tab or refresh the page, your tasks will be saved.
 
 <p>
- <img src="./public/Img/5.png" width="250" height="200" />
- <img src="./public/Img/6.png" width="350" height="150" />
+ <img src="./public/Img/5.png" width="350" height="200" />
+ <img src="./public/Img/6.png" width="350" height="100" />
 </p>
 
 ## Technologies Used
