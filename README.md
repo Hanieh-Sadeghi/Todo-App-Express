@@ -10,7 +10,7 @@ JavaScript is pretty amazing. JavaScript app will allow us to add tasks, to edit
 
 <p>
  <img src="./public/Img/1.png" width="300" height="200" />
- <img src="./public/Img/2.png" width="130" height="200" />
+ <img src="./public/Img/2.png" width="140" height="200" />
 </p>
 
 ## Actions
@@ -28,8 +28,8 @@ JavaScript is pretty amazing. JavaScript app will allow us to add tasks, to edit
 - Delete: Permanently delete a task from the list.
 
 <p>
- <img src="./public/Img/3.png" width="350" height="200" />
- <img src="./public/Img/4.png" width="300" height="100" />
+ <img src="./public/Img/3.png" width="140" height="200" />
+ <img src="./public/Img/4.png" width="140" height="200" />
 </p>
 
 ## Local Storage
