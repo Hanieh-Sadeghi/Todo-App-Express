@@ -13,26 +13,13 @@ JavaScript is pretty amazing. JavaScript app will allow us to add tasks, to edit
 - Mark a task as completed
 - Delete a task
 - 
-
-## Getting Started
-
-### Prerequisites
-
-Make sure you have the following installed:
-
-- Web browser
-
 ### Installation
 
-1. Clone the repository:
-git clone 
   <li>
         <p>Clone the repository:</p>
         <pre><code>https://github.com/Hanieh-Sadeghi/ToDo-AppJavaScript-And-Local-Storage-
 </code></pre>
     </li>
-3. Open `index.html` in your web browser.
-
 ## Usage
 
 1. Type a task in the input field.
@@ -49,6 +36,7 @@ The app uses client-side storage to automatically store the latest state of the 
 - HTML
 - CSS
 - JavaScript
+- Json
 
 ## Contributing
 
