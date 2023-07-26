@@ -28,7 +28,7 @@ Make sure you have the following installed:
 git clone 
   <li>
         <p>Clone the repository:</p>
-        <pre><code>https://github.com/Hanieh-Sadeghi/Draw-Verse](https://github.com/Hanieh-Sadeghi/ToDo-AppJavaScript-And-Local-Storage-
+        <pre><code>https://github.com/Hanieh-Sadeghi/ToDo-AppJavaScript-And-Local-Storage-
 </code></pre>
     </li>
 3. Open `index.html` in your web browser.
