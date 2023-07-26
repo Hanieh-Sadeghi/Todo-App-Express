@@ -38,7 +38,7 @@ The app uses client-side storage to automatically store the latest state of the 
 
 <p>
  <img src="./public/Img/5.png" width="350" height="150" />
- <img src="./public/Img/6.png" width="250" height="150" />
+ <img src="./public/Img/6.png" width="250" height="100" />
 </p>
 
 ## Technologies Used
@@ -54,6 +54,7 @@ The app uses client-side storage to automatically store the latest state of the 
         <p>Clone the repository:</p>
         <pre><code>https://github.com/Hanieh-Sadeghi/ToDo-AppJavaScript-And-Local-Storage-<code></pre>
     </li>
+    
 
 ## Contributing
 
