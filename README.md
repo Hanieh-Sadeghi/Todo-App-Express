@@ -53,13 +53,6 @@ The app uses client-side storage to automatically store the latest state of the 
   <li>
         <p>Clone the repository:</p>
         <pre><code>https://github.com/Hanieh-Sadeghi/ToDo-AppJavaScript-And-Local-Storage-<code></pre>
-    </li>
+   </li>
     
 
-## Contributing
-
-Contributions are welcome! If you find any issues or want to add new features, feel free to open a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
