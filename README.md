@@ -51,8 +51,8 @@ The app uses client-side storage to automatically store the latest state of the 
 ### Installation
 
   <li>
-        <p>Clone the repository:</p>
+        <h1>Clone the repository:</h1>
         <pre><code>https://github.com/Hanieh-Sadeghi/ToDo-AppJavaScript-And-Local-Storage-<code></pre>
-   </li>
+  </li>
     
 
