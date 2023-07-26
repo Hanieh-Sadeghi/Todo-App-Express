@@ -38,7 +38,7 @@ The app uses client-side storage to automatically store the latest state of the 
 
 <p>
  <img src="./public/Img/5.png" width="250" height="200" />
- <img src="./public/Img/6.png" width="200" height="200" />
+ <img src="./public/Img/6.png" width="150" height="200" />
 </p>
 
 ## Technologies Used
