@@ -1,6 +1,6 @@
 # ToDo-AppJavaScript-And-Local-Storage
+Welcome to ToDo-App! Stay organized and efficient with easy task management. Add, edit, complete, or delete tasks with a breeze. Your progress is saved automatically with local storage. Happy organizing!
 
-JavaScript is pretty amazing. JavaScript app will allow us to add tasks, to edit them, mark them as complete, and delete them. All this happens with the help of CSS, vanilla JavaScript, and the browser’s local storage.
 ## Usage
 
 1. Add a task by typing it in the input field.
