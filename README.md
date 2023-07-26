@@ -29,7 +29,7 @@ JavaScript is pretty amazing. JavaScript app will allow us to add tasks, to edit
 
 <p>
  <img src="./public/Img/3.png" width="150" height="200" />
- <img src="./public/Img/4.png" width="150" height="200" />
+ <img src="./public/Img/4.png" width="250" height="150" />
 </p>
 
 ## Local Storage
