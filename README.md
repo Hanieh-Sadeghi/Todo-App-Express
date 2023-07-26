@@ -2,6 +2,10 @@
 
 JavaScript is pretty amazing. JavaScript app will allow us to add tasks, to edit them, mark them as complete, and delete them. All this happens with the help of CSS, vanilla JavaScript, and the browser’s local storage.
 
+<p>
+ <img src="./img/img1.png" width="350" height="200" />
+ <img src="./img/img2.png" width="350" height="200" />
+</p>
 
 ## Features
 
@@ -21,8 +25,13 @@ Make sure you have the following installed:
 ### Installation
 
 1. Clone the repository:
-git clone https://github.com/Hanieh-Sadeghi/ToDo-AppJavaScript-And-Local-Storage-
-2. Open `index.html` in your web browser.
+git clone 
+  <li>
+        <p>Clone the repository:</p>
+        <pre><code>https://github.com/Hanieh-Sadeghi/Draw-Verse](https://github.com/Hanieh-Sadeghi/ToDo-AppJavaScript-And-Local-Storage-
+</code></pre>
+    </li>
+3. Open `index.html` in your web browser.
 
 ## Usage
 
