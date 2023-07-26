@@ -27,7 +27,8 @@ body {
   padding: 28px 0 30px;
   margin: 137px auto;
   backdrop-filter: blur(30px);
-  border-radius: 7px;
+  border-radius: 15px;
+  border: 1.5px solid #a3b399;
   box-shadow: 0 10px 30px rgba(214, 0, 0, 0.1);
 }
 
