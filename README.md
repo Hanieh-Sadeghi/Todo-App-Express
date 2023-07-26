@@ -9,8 +9,8 @@ JavaScript is pretty amazing. JavaScript app will allow us to add tasks, to edit
 4. Click the "Delete" button next to a task to remove it from the list.
 
 <p>
- <img src="./public/Img/1.png" width="350" height="200" />
- <img src="./public/Img/2.png" width="120" height="200" />
+ <img src="./public/Img/1.png" width="300" height="200" />
+ <img src="./public/Img/2.png" width="130" height="200" />
 </p>
 
 ## Actions
