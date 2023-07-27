@@ -34,8 +34,8 @@ Welcome to ToDo-App! Stay organized and efficient with easy task management. Add
 
 <h2>YouTube</h2>
     <li>
-        <p>link video:</p>
-        <pre><code> https://youtu.be/xnofAd5YAZg
+     <p>link video:</p>
+      <pre><code> https://youtu.be/xnofAd5YAZg
 </code></pre>
     </li>
  
