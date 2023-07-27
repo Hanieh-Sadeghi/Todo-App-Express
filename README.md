@@ -49,10 +49,12 @@ The app uses client-side storage to automatically store the latest state of the 
 - JSON
 
 <h2>YouTube</h2>
+<ol>
     <li>
      <p>link video:</p>
       <pre><code> https://youtu.be/xnofAd5YAZg </code></pre>
     </li>
+</ol>
 
 <h2>Installation</h2>
 <ol>
