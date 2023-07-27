@@ -32,6 +32,13 @@ Welcome to ToDo-App! Stay organized and efficient with easy task management. Add
  <img src="./public/Img/4.png" width="150" height="200" />
 </p>
 
+<h2>YouTube</h2>
+    <li>
+        <p>link video:</p>
+        <pre><code> https://youtu.be/xnofAd5YAZg
+</code></pre>
+    </li>
+ 
 ## Local Storage
 
 The app uses client-side storage to automatically store the latest state of the application. So, even if you close the tab or refresh the page, your tasks will be saved.
@@ -49,7 +56,6 @@ The app uses client-side storage to automatically store the latest state of the 
 - JSON
 
 <h2>Installation</h2>
-<p>To use this Art Canvas, follow the instructions below:</p>
 <ol>
     <li>
         <p>Clone the repository:</p>
