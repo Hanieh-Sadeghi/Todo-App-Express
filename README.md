@@ -31,13 +31,6 @@ Welcome to ToDo-App! Stay organized and efficient with easy task management. Add
  <img src="./public/Img/3.png" width="150" height="200" />
  <img src="./public/Img/4.png" width="150" height="200" />
 </p>
-
-<h2>YouTube</h2>
-    <li>
-     <p>link video:</p>
-      <pre><code> https://youtu.be/xnofAd5YAZg
-</code></pre>
-    </li>
  
 ## Local Storage
 
@@ -54,6 +47,12 @@ The app uses client-side storage to automatically store the latest state of the 
 - CSS
 - JavaScript
 - JSON
+
+<h2>YouTube</h2>
+    <li>
+     <p>link video:</p>
+      <pre><code> https://youtu.be/xnofAd5YAZg </code></pre>
+    </li>
 
 <h2>Installation</h2>
 <ol>
