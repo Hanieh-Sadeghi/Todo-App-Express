@@ -22,7 +22,7 @@ body {
   background: #a6fff286;
 }
 
-.wrapper {
+.container {
   max-width: 405px;
   padding: 28px 0 30px;
   margin: 137px auto;
@@ -72,22 +72,22 @@ li {
   border-bottom: 1px solid #99a98f;
 }
 
-.filters span {
+.header span {
   margin: 0 8px;
   font-size: 17px;
   color: #fff8de;
   cursor: pointer;
 }
 
-.filters span:first-child {
+.header span:first-child {
   margin-left: 0;
 }
 
-.filters span.active {
+.header span.active {
   color: #7c9070;
 }
 
-.controls .clear-btn {
+.clearBtn {
   border: none;
   opacity: 0.6;
   outline: none;
@@ -102,12 +102,12 @@ li {
   background: linear-gradient(135deg, #3c5d45 10%, #99a98f 100%);
 }
 
-.clear-btn.active {
+.active {
   opacity: 0.9;
   pointer-events: auto;
 }
 
-.clear-btn:active {
+.clearBtn:active {
   transform: scale(0.93);
 }
 
@@ -173,16 +173,16 @@ li {
   text-decoration: line-through;
 }
 
-.task-box .settings {
+.select {
   position: relative;
 }
 
-.settings :where(i, li) {
-  color: #FFF8DE;
+.select :where(i, li) {
+  color: #fff8de;
   cursor: pointer;
 }
 
-.settings .task-menu {
+.task-menu {
   z-index: 10;
   right: -5px;
   bottom: -65px;
@@ -223,11 +223,11 @@ li {
   margin-bottom: 0;
 }
 
-.settings li:hover {
+.select li:hover {
   color: #edc6b1;
 }
 
-.settings li i {
+.select li i {
   padding-right: 8px;
 }
 
@@ -236,11 +236,11 @@ li {
     padding: 0 10px;
   }
 
-  .wrapper {
+  .container {
     padding: 20px 0;
   }
 
-  .filters span {
+  .header span {
     margin: 0 5px;
   }
 
@@ -256,7 +256,6 @@ li {
     margin-top: 20px;
     margin-right: 5px;
     padding: 0 15px 10px 20px;
-    
   }
 
   .task label input {

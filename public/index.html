@@ -14,19 +14,33 @@
   </head>
 
   <body>
-    <div class="wrapper">
+    <div class="container">
       <div class="task-input">
         <input type="text" placeholder="Add a new task" />
       </div>
       <div class="controls">
-        <div class="filters">
+        <div class="header">
           <span class="active" id="all">All</span>
-          <span id="pending">Pending</span>
+          <span id="Active">Active</span>
           <span id="completed">Completed</span>
         </div>
-        <button class="clear-btn">Clear All</button>
+        <button class="clearBtn">Clear All</button>
       </div>
-      <ul class="task-box"></ul>
+      <ul class="task-box">
+        <li class="task">
+          <label for="${id}">
+              <!-- <input onclick="updateStatus(this)" type="checkbox" id="${id}" ${completed}> -->
+              <!-- <p class="${completed}">${todo.name}</p> -->
+          </label>
+          <div class="select">
+              <!-- <i onclick="showMenu(this)" class="uil uil-ellipsis-h"></i> -->
+              <ul class="task-menu">
+                  <!-- <li onclick='editTask(${id}, "${todo.name}")'><i class="uil uil-pen"></i>Edit</li> -->
+                  <!-- <li onclick='deleteTask(${id}, "${header}")'><i class="uil uil-trash"></i>Delete</li> -->
+              </ul>
+          </div>
+        </li> 
+      </ul>
     </div>
     <script src="./Script/main.js"></script>
   </body>
