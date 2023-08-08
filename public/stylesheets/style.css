@@ -23,13 +23,12 @@ body {
 }
 
 .container {
-  max-width: 405px;
-  padding: 28px 0 30px;
-  margin: 137px auto;
+  max-width: 450px;
+  padding: 30px 0 45px;
+  margin: 157px auto;
   backdrop-filter: blur(30px);
-  border-radius: 15px;
+  border-radius: 25px;
   border: 1.5px solid #a3b399;
-  box-shadow: 0 10px 30px rgba(214, 0, 0, 0.1);
 }
 
 .task-input {
@@ -57,7 +56,6 @@ body {
 
 .task-input input::placeholder {
   color: #99a98f;
-  /* background-color: #64856c3c; */
 }
 
 .controls,
@@ -84,6 +82,22 @@ li {
 }
 
 .header span.active {
+  color: #7c9070;
+}
+
+.form {
+  /* border: 1px solid red; */
+  margin: 0 20px ;
+  /* bottom: 30px; */
+}
+.form span{
+  padding: 10px 10px;
+  font-size: 16px;
+  color: #fff8de;
+  /* cursor: pointer; */
+}
+
+.form span .active {
   color: #7c9070;
 }
 
@@ -116,6 +130,7 @@ li {
   margin-right: 5px;
   padding: 0 20px 10px 25px;
   color: #fff8de;
+  /* border-bottom: 1px solid #99a98f; */
 }
 
 .task-box.overflow {
