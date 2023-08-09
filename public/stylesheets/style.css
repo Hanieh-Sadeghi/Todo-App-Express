@@ -31,7 +31,7 @@ body {
   border: 1.5px solid #a3b399;
 }
 
-.task-input {
+#task-input {
   display: flex; 
   align-items: center; 
   justify-content: space-between;
@@ -40,7 +40,7 @@ body {
   position: relative;
 }
 
-.task-input input {
+#task-input input {
   background-color: hsla(93, 22%, 76%, 0);
   height: 100%;
   width: calc(100% - 55px); 
@@ -52,12 +52,12 @@ body {
   color: #fff8de;
 }
 
-.task-input input:focus,
-.task-input input.active {
+#task-input input:focus,
+#task-input input.active {
   border: 2px solid #99a98f;
 }
 
-.task-input input::placeholder {
+#task-input input::placeholder {
   color: #99a98f;
 }
 
@@ -293,7 +293,7 @@ footer a {
     margin: 0 5px;
   }
 
-  .task-input {
+  #task-input {
     padding: 0 20px;
   }
 
