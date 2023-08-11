@@ -171,7 +171,7 @@ body {
   justify-content: flex-start;
 }
 
-.select :hover .task-menu {
+.task-menu {
   transform: scale(1);
 }
 
