@@ -150,15 +150,15 @@ body {
 }
 
 .task-menu {
-  border: 1px solid red;
-  height: 80px;
+  display: none;
   list-style: none;
-  z-index: 3;
-  right: -50px;
   position: absolute;
+  height: 80px;
+  right: -50px;
+  z-index: 3;
   padding: 5px 0;
   border-radius: 10px;
-  /* background: #edc6b1; */
+  background: hsla(21, 63%, 81%, 0.736);
   transform-origin: top right;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.285);
   transition: transform 0.2s ease; 
@@ -171,9 +171,13 @@ body {
   justify-content: flex-start;
 }
 
-.task-menu {
-  transform: scale(1);
+.task-menu.show-menu {
+  display: block;
 }
+
+.task-menu li:hover {
+  color: #edc6b1;
+} 
 
 .select {
   margin-left: auto;
@@ -188,10 +192,6 @@ body {
   color: #fff8de;
   cursor: pointer;
 }
-
-/* .select li:hover {
-  color: #edc6b1;
-} */
 
 .task:last-child .task-menu {
   bottom: 0;
