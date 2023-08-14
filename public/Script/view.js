@@ -6,36 +6,29 @@ const input = document.querySelector("input[type='text']");
 document.getElementById("add-btn").addEventListener("click", function () {
   console.log("add-btn");
   // debugger;
-
-  const todoText = document.getElementById("todoInput").value;
-  if (todoText !== "") {
-    const listEl = document.querySelector(".task-box");
-    console.log("listEl");
-    const newTask = document.createElement("li");
-    newTask.classList.add("task");
-    newTask.innerHTML = `
-          <label>
-            <input type="checkbox" />
-            <p>${todoText}</p>
-          </label>
-          <div class="select">
-            <i class="uil uil-ellipsis-h"></i>
-          </div>
-          <ul class="task-menu">
-            <li><i class="uil uil-pen"></i>Edit</li>
-            <li><i class="uil uil-trash"></i>Delete</li>
-          `;
-
-    listEl.appendChild(newTask);
+  window.addEventListener("load", function () {
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    console.log(tasks)
-    tasks.push(todoText);
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-
-    document.getElementById("todoInput").value = "";
-  }
-});
-
+    const listEl = document.querySelector(".task-box");
+  
+    tasks.forEach(taskText => {
+        const newTask = document.createElement("li");
+        newTask.classList.add("task");
+        newTask.innerHTML = `
+            <label>
+                <input type="checkbox" />
+                <p class="text-center">${taskText}</p>
+            </label>
+            <div class="select">
+                <i class="uil uil-ellipsis-h"></i>
+            </div>
+            <ul class="task-menu">
+                <li><i class="uil uil-pen"></i>Edit</li>
+                <li><i class="uil uil-trash"></i>Delete</li>
+            </ul> `;
+      
+        listEl.appendChild(newTask);
+    });
+  });
 
 ////////// /////////////////////
 // document.addEventListener("DOMContentLoaded", function () {
