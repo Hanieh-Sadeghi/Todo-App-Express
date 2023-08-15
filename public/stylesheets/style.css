@@ -68,7 +68,7 @@ body {
   padding: 9.5px 15px;
   border-radius: 5px;
   letter-spacing: 0.3px;
-  pointer-events: none;
+  /* pointer-events: none; */
   background: linear-gradient(135deg, #3c5d45 10%, #99a98f 100%);
 }
 
@@ -101,7 +101,7 @@ body {
   margin-left: 0;
 }
 
-.clearBtn {
+#clearBtn {
   border: none;
   outline: none;
   color: #fff8de;
@@ -110,7 +110,7 @@ body {
   padding: 7px 13px;
   border-radius: 4px;
   letter-spacing: 0.3px;
-  pointer-events: none;
+  /* pointer-events: none; */
   transition: transform 0.25s ease;
   background: linear-gradient(135deg, #3c5d45 10%, #99a98f 100%);
 }
@@ -118,20 +118,41 @@ body {
 .task {
   list-style: none;
   display: flex;
-  align-items: flex-start;
+  margin: 15px 25px;
+  /* align-items: flex-start; */
   position: relative;
+  border-bottom: 1px solid #85a389;
 }
 
 .task-box {
-  margin: 25px 20px;
-  border-bottom: 2.5px solid #85a389;
+  text-align: center;
+  border-bottom: 1.5px solid #85a389;
 }
+
+.task-box {
+  overflow-y: auto;
+  max-height: 330px;
+}
+
+.task-box::-webkit-scrollbar {
+  width: 6px;
+} 
+
+.task-box::-webkit-scrollbar-track {
+  background: #85a389;
+  border-radius: 55px;
+} 
+
+.task-box::-webkit-scrollbar-thumb {
+  background: #edc6b189;
+  border-radius: 55px;
+} 
 
 .task label {
   display: flex;
   align-items: center;
   font-size: 17px;
-  margin-bottom: 16px;
+  margin-bottom: 5px;
   padding-bottom: 15px;
 }
 
@@ -139,6 +160,7 @@ body {
   margin-right: 12px;
   width: 18px;
   height: 18px;
+  
 }
 
 .task-box .task:last-child {
@@ -215,25 +237,6 @@ body {
   opacity: 0.9;
   pointer-events: auto;
 }
-
-.task-box.overflow {
-  overflow-y: auto;
-  max-height: 300px;
-}
-
-.task-box::-webkit-scrollbar {
-  width: 5px;
-} 
-
-.task-box::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 25px;
-} 
-
-.task-box::-webkit-scrollbar-thumb {
-  background: #e6e6e6;
-  border-radius: 25px;
-} 
 
 .task label p.checked {
   text-decoration: line-through;
