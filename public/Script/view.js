@@ -1,8 +1,9 @@
-
 const todoForm = document.querySelector("#task-input");
 const addTasks = document.getElementById("add-btn");
 const listEl = document.querySelector(".task-box");
 const deleteAllBtn = document.getElementById("clearBtn");
+
+
 
 // Load tasks from local storage
 function loadTasks() {
@@ -54,39 +55,32 @@ function deleteAllTasks() {
   listEl.innerHTML = ""; // Clear the task list on the page
 }
 
+// Event listener for changing task status
+listEl.addEventListener("change", function (event) {
+  const checkbox = event.target;
+  if (checkbox.type === "checkbox") {
+    const textElement = checkbox.nextElementSibling;
+    if (checkbox.checked) {
+      textElement.style.textDecoration = "line-through";
+    } else {
+      textElement.style.textDecoration = "none";
+    }
+  }
+});
+
+
+
 // Event listener for loading tasks
 window.addEventListener("load", loadTasks);
 
 // Event listener for adding a new task
 addTasks.addEventListener("click", addNewTask);
 
-
 // Event listener for deleting all tasks
 deleteAllBtn.addEventListener("click", deleteAllTasks);
 
-
-
-
-
-
-
-
-
-
-
 ////////// /////////////////////
-// document.addEventListener("DOMContentLoaded", function () {
-// const selectIcon = document.querySelector(".select i");
-// const taskMenu = document.querySelector(".task-menu");
 
-// selectIcon.addEventListener("click", function (event) {
-// event.stopPropagation();
-// taskMenu.classList.toggle("show-menu");
-// });
 
-// document.addEventListener("click", function (event) {
-// if (
-// !taskMenu.contains(event.target) &&
-// !selectIcon.contains(event.target)
-// ) {
-// taskMenu.classList.remove("show-menu");
+
+
