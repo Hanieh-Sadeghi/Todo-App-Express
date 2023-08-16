@@ -2,6 +2,7 @@
 const todoForm = document.querySelector("#task-input");
 const addTasks = document.getElementById("add-btn");
 const listEl = document.querySelector(".task-box");
+const deleteAllBtn = document.getElementById("clearBtn");
 
 // Load tasks from local storage
 function loadTasks() {
@@ -47,6 +48,12 @@ function saveTasksToLocalStorage(taskText) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
+// Delete all tasks from LocalStorage and the page
+function deleteAllTasks() {
+  localStorage.removeItem("tasks");
+  listEl.innerHTML = ""; // Clear the task list on the page
+}
+
 // Event listener for loading tasks
 window.addEventListener("load", loadTasks);
 
@@ -54,6 +61,8 @@ window.addEventListener("load", loadTasks);
 addTasks.addEventListener("click", addNewTask);
 
 
+// Event listener for deleting all tasks
+deleteAllBtn.addEventListener("click", deleteAllTasks);
 
 
 
