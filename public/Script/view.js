@@ -3,7 +3,18 @@ const addTasks = document.getElementById("add-btn");
 const listEl = document.querySelector(".task-box");
 const deleteAllBtn = document.getElementById("clearBtn");
 
+document.addEventListener("DOMContentLoaded", function () {
+  const taskList = document.querySelector(".task-box");
 
+  taskList.addEventListener("click", function (event) {
+    const selectIcon = event.target.closest(".select i");
+    if (selectIcon) {
+      const taskMenu = selectIcon.parentElement.nextElementSibling;
+      taskMenu.classList.toggle("show-menu");
+    }
+  });
+
+});
 
 // Load tasks from local storage
 function loadTasks() {
