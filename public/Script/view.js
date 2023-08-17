@@ -3,6 +3,8 @@ const addTasks = document.getElementById("add-btn");
 const listEl = document.querySelector(".task-box");
 const deleteAllBtn = document.getElementById("clearBtn");
 
+
+// show menu and hide
 document.addEventListener("DOMContentLoaded", function () {
   const taskList = document.querySelector(".task-box");
 
@@ -13,8 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
       taskMenu.classList.toggle("show-menu");
     }
   });
-
 });
+
+
 
 // Load tasks from local storage
 function loadTasks() {
@@ -49,7 +52,7 @@ function addNewTask() {
   if (input.value.trim() !== "") {
     createTaskElement(input.value.trim());
     saveTasksToLocalStorage(input.value.trim());
-    input.value = ""; // Clear the input field
+    input.value = ""; 
   }
 }
 
@@ -63,7 +66,7 @@ function saveTasksToLocalStorage(taskText) {
 // Delete all tasks from LocalStorage and the page
 function deleteAllTasks() {
   localStorage.removeItem("tasks");
-  listEl.innerHTML = ""; // Clear the task list on the page
+  listEl.innerHTML = ""; 
 }
 
 // Event listener for changing task status
@@ -79,8 +82,6 @@ listEl.addEventListener("change", function (event) {
   }
 });
 
-
-
 // Event listener for loading tasks
 window.addEventListener("load", loadTasks);
 
@@ -91,7 +92,3 @@ addTasks.addEventListener("click", addNewTask);
 deleteAllBtn.addEventListener("click", deleteAllTasks);
 
 ////////// /////////////////////
-
-
-
-
