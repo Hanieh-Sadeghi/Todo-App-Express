@@ -3,22 +3,6 @@ const addTasks = document.getElementById("add-btn");
 const listEl = document.querySelector(".task-box");
 const deleteAllBtn = document.getElementById("clearBtn");
 
-
-// show menu and hide
-document.addEventListener("DOMContentLoaded", function () {
-  const taskList = document.querySelector(".task-box");
-
-  taskList.addEventListener("click", function (event) {
-    const selectIcon = event.target.closest(".select i");
-    if (selectIcon) {
-      const taskMenu = selectIcon.parentElement.nextElementSibling;
-      taskMenu.classList.toggle("show-menu");
-    }
-  });
-});
-
-
-
 // Load tasks from local storage
 function loadTasks() {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
@@ -28,12 +12,12 @@ function loadTasks() {
 }
 
 // Create a task element
-function createTaskElement(taskText) {
+function createTaskElement(taskText, completed) {
   const newTask = document.createElement("li");
   newTask.classList.add("task");
   newTask.innerHTML = `
     <label>
-      <input type="checkbox" />
+      <input type="checkbox"  ${completed ? "checked" : ""} />
       <p class="text-center">${taskText}</p>
     </label>
     <div class="select">
@@ -44,6 +28,7 @@ function createTaskElement(taskText) {
       <li><i class="uil uil-trash"></i>Delete</li>
     </ul> `;
   listEl.appendChild(newTask);
+  // updateTaskStatus(newTask, completed);
 }
 
 // Add a new task
@@ -52,7 +37,7 @@ function addNewTask() {
   if (input.value.trim() !== "") {
     createTaskElement(input.value.trim());
     saveTasksToLocalStorage(input.value.trim());
-    input.value = ""; 
+    input.value = "";
   }
 }
 
@@ -66,7 +51,7 @@ function saveTasksToLocalStorage(taskText) {
 // Delete all tasks from LocalStorage and the page
 function deleteAllTasks() {
   localStorage.removeItem("tasks");
-  listEl.innerHTML = ""; 
+  listEl.innerHTML = "";
 }
 
 // Event listener for changing task status
@@ -92,3 +77,28 @@ addTasks.addEventListener("click", addNewTask);
 deleteAllBtn.addEventListener("click", deleteAllTasks);
 
 ////////// /////////////////////
+// show menu and hide
+function setupTaskMenus() {
+  const taskList = document.querySelector(".task-box");
+
+  taskList.addEventListener("click", function (event) {
+    const selectIcon = event.target.closest(".select i");
+    if (selectIcon) {
+      const taskMenu = selectIcon.parentElement.nextElementSibling;
+      taskMenu.classList.toggle("show-menu");
+      showMenu(taskMenu);
+    }
+  });
+}
+
+function showMenu(taskMenu) {
+  console.log("showMenu");
+  document.addEventListener("click", (e) => {
+    if (e.target.tagName !== "I" && !taskMenu.contains(e.target)) {
+      taskMenu.classList.remove("show-menu");
+      console.log(taskMenu);
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", setupTaskMenus);
