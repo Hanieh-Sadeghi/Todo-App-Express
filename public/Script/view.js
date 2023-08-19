@@ -7,28 +7,27 @@ const deleteAllBtn = document.getElementById("clearBtn");
 function loadTasks() {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   tasks.forEach((taskText) => {
-    createTaskElement(taskText);
+    createTaskElement(taskText, tasks.length);
   });
 }
 
 // Create a task element
-function createTaskElement(taskText, completed) {
+function createTaskElement(taskText, id) {
   const newTask = document.createElement("li");
   newTask.classList.add("task");
   newTask.innerHTML = `
     <label>
-      <input type="checkbox"  ${completed ? "checked" : ""} />
+      <input type="checkbox"} />
       <p class="text-center">${taskText}</p>
     </label>
     <div class="select">
       <i class="uil uil-ellipsis-h"></i>
     </div>
     <ul class="task-menu">
-      <li><i class="uil uil-pen"></i>Edit</li>
-      <li><i class="uil uil-trash"></i>Delete</li>
+      <li onclick="EditTask('${id}')"><i class="uil uil-pen"></i>Edit</li>
+      <li onclick ='deleteTask(${id})'><i class="uil uil-trash"></i>Delete</li>
     </ul> `;
   listEl.appendChild(newTask);
-  // updateTaskStatus(newTask, completed);
 }
 
 // Add a new task
@@ -76,7 +75,8 @@ addTasks.addEventListener("click", addNewTask);
 // Event listener for deleting all tasks
 deleteAllBtn.addEventListener("click", deleteAllTasks);
 
-////////// /////////////////////
+//////////////////////////////
+
 // show menu and hide
 function setupTaskMenus() {
   const taskList = document.querySelector(".task-box");
@@ -102,3 +102,16 @@ function showMenu(taskMenu) {
 }
 
 document.addEventListener("DOMContentLoaded", setupTaskMenus);
+
+// Delete Task 
+function deleteTask(deleteId) {
+  console.log(deleteId);
+  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  tasks.splice(deleteId, 1);
+  // createTaskElement()
+}
+
+// Edit Task
+function EditTask(EditId) {
+  console.log(EditId)
+}
