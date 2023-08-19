@@ -117,15 +117,16 @@ function showMenu(taskMenu) {
 document.addEventListener("DOMContentLoaded", setupTaskMenus);
 
 // Delete Task arry
-function deleteTask(deleteId) {
-  console.log(deleteId);
 
+function deleteTask(deleteId) {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  tasks.splice(deleteId, 1);
+  console.log(tasks);
+  tasks.splice(tasks.indexOf(deleteId), deleteId+1);
   console.log(tasks);
   console.log(deleteTask);
-  // createTaskElement()
+  
 }
+
 
 // Edit Task
 function EditTask(EditId, taskText) {
