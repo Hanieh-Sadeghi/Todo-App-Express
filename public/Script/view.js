@@ -11,22 +11,23 @@ let TaskId;
 
 // Load tasks from local storage
 function loadTasks() {
+  listEl.innerHTML = "";
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  tasks.forEach((taskText) => {
-    createTaskElement(taskText, tasks.length);
+  tasks.forEach((task) => {
+    createTaskElement(task.text , task.id);
   });
 }
 
 filters.forEach((btn) => {
   btn.addEventListener("click", () => {
     console.log(btn);
-    document.querySelector('span.active').classList.remove('active')
-    btn.classList.add('active')
+    document.querySelector("span.active").classList.remove("active");
+    btn.classList.add("active");
   });
 });
- 
+
 // Create a task element
-function createTaskElement(taskText, id  ) {
+function createTaskElement(taskText, id) {
   const newTask = document.createElement("li");
   newTask.classList.add("task");
   newTask.innerHTML = `
@@ -56,7 +57,7 @@ function addNewTask() {
 // Save tasks to local storage
 function saveTasksToLocalStorage(taskText) {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  tasks.push(taskText);
+  tasks.push({ text: taskText, id: tasks.length });
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
@@ -120,17 +121,14 @@ document.addEventListener("DOMContentLoaded", setupTaskMenus);
 
 function deleteTask(deleteId) {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  console.log(tasks);
-  tasks.splice(tasks.indexOf(deleteId), deleteId+1);
-  console.log(tasks);
-  console.log(deleteTask);
-  
+  const filteredTasks = tasks.filter((todo) => {
+    return todo.id !== +deleteId;
+  });
+  localStorage.setItem("tasks", JSON.stringify(filteredTasks));
+  loadTasks();
 }
 
-
 // Edit Task
-function EditTask(EditId, taskText) {
-  console.log(EditId, taskText);
-  TaskId = EditId;
-  input.value = taskText;
+function editTask(editId, taskText) {
+  console.log(editId, taskText);
 }
