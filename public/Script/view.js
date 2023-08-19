@@ -2,6 +2,12 @@ const todoForm = document.querySelector("#task-input");
 const addTasks = document.getElementById("add-btn");
 const listEl = document.querySelector(".task-box");
 const deleteAllBtn = document.getElementById("clearBtn");
+const input = document.getElementById("todoInput");
+
+filters = document.querySelectorAll(".header span");
+
+let TaskId;
+// let isEditedTask = false;
 
 // Load tasks from local storage
 function loadTasks() {
@@ -11,8 +17,16 @@ function loadTasks() {
   });
 }
 
+filters.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    console.log(btn);
+    document.querySelector('span.active').classList.remove('active')
+    btn.classList.add('active')
+  });
+});
+ 
 // Create a task element
-function createTaskElement(taskText, id) {
+function createTaskElement(taskText, id  ) {
   const newTask = document.createElement("li");
   newTask.classList.add("task");
   newTask.innerHTML = `
@@ -24,7 +38,7 @@ function createTaskElement(taskText, id) {
       <i class="uil uil-ellipsis-h"></i>
     </div>
     <ul class="task-menu">
-      <li onclick="EditTask('${id}')"><i class="uil uil-pen"></i>Edit</li>
+      <li onclick="EditTask('${id} , ${taskText}')"><i class="uil uil-pen"></i>Edit</li>
       <li onclick ='deleteTask(${id})'><i class="uil uil-trash"></i>Delete</li>
     </ul> `;
   listEl.appendChild(newTask);
@@ -32,7 +46,6 @@ function createTaskElement(taskText, id) {
 
 // Add a new task
 function addNewTask() {
-  const input = document.getElementById("todoInput");
   if (input.value.trim() !== "") {
     createTaskElement(input.value.trim());
     saveTasksToLocalStorage(input.value.trim());
@@ -103,15 +116,20 @@ function showMenu(taskMenu) {
 
 document.addEventListener("DOMContentLoaded", setupTaskMenus);
 
-// Delete Task 
+// Delete Task arry
 function deleteTask(deleteId) {
   console.log(deleteId);
+
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   tasks.splice(deleteId, 1);
+  console.log(tasks);
+  console.log(deleteTask);
   // createTaskElement()
 }
 
 // Edit Task
-function EditTask(EditId) {
-  console.log(EditId)
+function EditTask(EditId, taskText) {
+  console.log(EditId, taskText);
+  TaskId = EditId;
+  input.value = taskText;
 }
