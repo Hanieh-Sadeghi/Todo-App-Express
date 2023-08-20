@@ -7,14 +7,14 @@ const input = document.getElementById("todoInput");
 filters = document.querySelectorAll(".header span");
 
 let TaskId;
-// let isEditedTask = false;
 
 // Load tasks from local storage
 function loadTasks() {
-  listEl.innerHTML = "";
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  listEl.innerHTML = "";
   tasks.forEach((task) => {
-    createTaskElement(task.text , task.id);
+    console.log(task.edit);
+    createTaskElement(task.text, task.id, task.edit);
   });
 }
 
@@ -27,19 +27,20 @@ filters.forEach((btn) => {
 });
 
 // Create a task element
-function createTaskElement(taskText, id) {
+function createTaskElement(taskText, id, edit) {
   const newTask = document.createElement("li");
   newTask.classList.add("task");
+  newTask.id = `task-${id}`;
   newTask.innerHTML = `
     <label>
       <input type="checkbox"} />
-      <p class="text-center">${taskText}</p>
+      <p class="text-center" contenteditable="${edit}">${taskText}</p>
     </label>
     <div class="select">
       <i class="uil uil-ellipsis-h"></i>
     </div>
     <ul class="task-menu">
-      <li onclick="EditTask('${id} , ${taskText}')"><i class="uil uil-pen"></i>Edit</li>
+      <li onclick="editTask('${id}')"><i class="uil uil-pen"></i>Edit</li>
       <li onclick ='deleteTask(${id})'><i class="uil uil-trash"></i>Delete</li>
     </ul> `;
   listEl.appendChild(newTask);
@@ -50,6 +51,7 @@ function addNewTask() {
   if (input.value.trim() !== "") {
     createTaskElement(input.value.trim());
     saveTasksToLocalStorage(input.value.trim());
+    loadTasks();
     input.value = "";
   }
 }
@@ -57,7 +59,7 @@ function addNewTask() {
 // Save tasks to local storage
 function saveTasksToLocalStorage(taskText) {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  tasks.push({ text: taskText, id: tasks.length });
+  tasks.push({ text: taskText, id: tasks.length, edit: false });
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
@@ -118,7 +120,6 @@ function showMenu(taskMenu) {
 document.addEventListener("DOMContentLoaded", setupTaskMenus);
 
 // Delete Task arry
-
 function deleteTask(deleteId) {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   const filteredTasks = tasks.filter((todo) => {
@@ -131,4 +132,17 @@ function deleteTask(deleteId) {
 // Edit Task
 function editTask(editId, taskText) {
   console.log(editId, taskText);
+  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  const selectedText = document.querySelector(`li#task-${editId}`).children[1]
+    .textContent;
+
+  tasks.forEach((todo) => {
+    if (todo.id === +editId) {
+      todo.edit = !todo.edit;
+      todo.text = selectedText;
+    }
+  });
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  loadTasks();
 }
