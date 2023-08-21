@@ -136,13 +136,14 @@ function editTask(editId, taskText) {
   const selectedText = document.querySelector(`li#task-${editId}`).children[1]
     .textContent;
 
-  tasks.forEach((todo) => {
+  tasks.forEach((todo) => {  
     if (todo.id === +editId) {
       todo.edit = !todo.edit;
       todo.text = selectedText;
     }
   });
-
+  console.log(tasks)
   localStorage.setItem("tasks", JSON.stringify(tasks));
   loadTasks();
 }
+
