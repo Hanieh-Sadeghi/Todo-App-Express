@@ -34,8 +34,8 @@ function createTaskElement(taskText, id, edit) {
   newTask.innerHTML = `
     <label>
       <input type="checkbox"} />
-      <p class="text-center" contenteditable="${edit}">${taskText}</p>
     </label>
+    <p class="text-center" contenteditable="${edit}">${taskText}</p>
     <div class="select">
       <i class="uil uil-ellipsis-h"></i>
     </div>
@@ -130,19 +130,19 @@ function deleteTask(deleteId) {
 }
 
 // Edit Task
-function editTask(editId, taskText) {
-  console.log(editId, taskText);
+function editTask(editId) {
+  // console.log(editId, taskText);
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   const selectedText = document.querySelector(`li#task-${editId}`).children[1]
     .textContent;
-
   tasks.forEach((todo) => {  
     if (todo.id === +editId) {
       todo.edit = !todo.edit;
       todo.text = selectedText;
     }
   });
-  console.log(tasks)
+
+  // console.log(selectedText)
   localStorage.setItem("tasks", JSON.stringify(tasks));
   loadTasks();
 }
