@@ -40,7 +40,7 @@ function createTaskElement(taskText, id, edit) {
       <i class="uil uil-ellipsis-h"></i>
     </div>
     <ul class="task-menu">
-      <li onclick="editTask('${id}')"><i class="uil uil-pen"></i>Edit</li>
+      <li onclick="editTask('${id}')"><i class="uil uil-pen"></i>${edit ? 'Save' : 'Edit'}</li>
       <li onclick ='deleteTask(${id})'><i class="uil uil-trash"></i>Delete</li>
     </ul> `;
   listEl.appendChild(newTask);
