@@ -4,6 +4,27 @@
   background: transparent;
 }
 
+.default{
+  --border : red;
+  --img : url(/public/Img/dave.jpg);
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 * {
   margin: 0;
   padding: 0;

@@ -30,17 +30,19 @@ filters.forEach((btn) => {
 function createTaskElement(taskText, id, edit) {
   const newTask = document.createElement("li");
   newTask.classList.add("task");
+
   newTask.id = `task-${id}`;
   newTask.innerHTML = `
     <label>
-      <input type="checkbox"} />
+      <input type="checkbox"/>
     </label>
     <p class="text-center" contenteditable="${edit}">${taskText}</p>
     <div class="select">
       <i class="uil uil-ellipsis-h"></i>
     </div>
     <ul class="task-menu">
-      <li onclick="editTask('${id}')"><i class="uil uil-pen"></i>${edit ? 'Save' : 'Edit'}</li>
+      <li onclick="editTask('${id}')"><i class="uil uil-pen"></i>${
+    edit ? "Save" : "Edit"}</li>
       <li onclick ='deleteTask(${id})'><i class="uil uil-trash"></i>Delete</li>
     </ul> `;
   listEl.appendChild(newTask);
@@ -59,7 +61,12 @@ function addNewTask() {
 // Save tasks to local storage
 function saveTasksToLocalStorage(taskText) {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  tasks.push({ text: taskText, id: tasks.length, edit: false });
+  tasks.push({
+    text: taskText,
+    id: tasks.length,
+    edit: false,
+    completed: false,
+  });
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
@@ -70,17 +77,20 @@ function deleteAllTasks() {
 }
 
 // Event listener for changing task status
-listEl.addEventListener("change", function (event) {
+function handleCheckboxChange(event) {
   const checkbox = event.target;
   if (checkbox.type === "checkbox") {
-    const textElement = checkbox.nextElementSibling;
+    const textElement = checkbox.parentElement.nextElementSibling;
     if (checkbox.checked) {
       textElement.style.textDecoration = "line-through";
     } else {
       textElement.style.textDecoration = "none";
     }
   }
-});
+}
+
+listEl.addEventListener("change", handleCheckboxChange);
+
 
 // Event listener for loading tasks
 window.addEventListener("load", loadTasks);
@@ -135,7 +145,7 @@ function editTask(editId) {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   const selectedText = document.querySelector(`li#task-${editId}`).children[1]
     .textContent;
-  tasks.forEach((todo) => {  
+  tasks.forEach((todo) => {
     if (todo.id === +editId) {
       todo.edit = !todo.edit;
       todo.text = selectedText;
@@ -146,4 +156,3 @@ function editTask(editId) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
   loadTasks();
 }
-
