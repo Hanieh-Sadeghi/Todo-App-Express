@@ -1,29 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-::selection{
+::selection {
   background: transparent;
 }
 
-.default{
-  --border : red;
-  --img : url(/public/Img/dave.jpg);
-  
+[data-theme=theme-container] {
+  --border: #a3b399;
+  --img: url(/public/Img/dave.jpg);
+  --text: #edc6b1;
+  --hover: #3c5d45e0;
 }
 
+[data-theme=canada] {
+  --img: url(/public/Img/canad.jpg);
+  --border: #537EC5;
+  --text: #F6E9E9;
+  --hover: #010038;
+}
 
+[data-theme=Snow] {
+  --border: #2D4356;
+  --img: url(/public/Img/mountains.jpg);
+  --text: #EAB2A0;
+  --hover: #A76F6F;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+[data-theme=jungl] {
+  --border: #040D12;
+  --img: url(/public/Img/unsplash.jpg);
+  --text: #93B1A6;
+  --hover: #183D3D;
+}
 
 * {
   margin: 0;
@@ -36,7 +43,7 @@ body {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background-image: url(/public/Img/dave.jpg);
+  background-image: var(--img);
   background-position: center;
   background-size: cover;
   position: relative;
@@ -48,7 +55,7 @@ body {
   margin: 157px auto;
   backdrop-filter: blur(30px);
   border-radius: 25px;
-  border: 1.5px solid #a3b399;
+  border: 1.5px solid var(--hover);
 }
 
 #task-input {
@@ -67,17 +74,17 @@ body {
   font-size: 18px;
   border-radius: 10px;
   padding: 0 0px 0 20px;
-  border: 1px solid #a3b399;
-  color: #fff8de;
+  border: 1px solid var(--hover);
+  color: var(--text);
 }
 
 #task-input input:focus,
 #task-input input.active {
-  border: 2px solid #99a98f;
+  border: 2px solid var(--border);
 }
 
 #task-input input::placeholder {
-  color: #99a98f;
+  color: var(--border);
 }
 
 #add-btn {
@@ -90,12 +97,12 @@ body {
   border-radius: 5px;
   letter-spacing: 0.3px;
   /* pointer-events: none; */
-  background: linear-gradient(135deg, #3c5d45 10%, #99a98f 100%);
+  background: linear-gradient(135deg, var(--hover) 10%, var(--border) 100%);
 }
 
 .todo-form {
   padding: 25px 25px;
-  border-bottom: 1px solid #99a98f;
+  border-bottom: 1px solid var(--hover);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -108,15 +115,15 @@ body {
 .header span {
   margin: 0 8px;
   font-size: 17px;
-  color: #fff8de;
+  color: var(--text);
   cursor: pointer;
-} 
+}
 
 .header span.active {
-  color: #7c9070;
+  color: var(--border);
 }
 .form span .active {
-  color: #7c9070;
+  color: var(--border);
 }
 .header span:first-child {
   margin-left: 0;
@@ -133,7 +140,7 @@ body {
   letter-spacing: 0.3px;
   /* pointer-events: none; */
   transition: transform 0.25s ease;
-  background: linear-gradient(135deg, #3c5d45 10%, #99a98f 100%);
+  background: linear-gradient(135deg, var(--hover) 10%, var(--border) 100%);
 }
 
 .task {
@@ -142,12 +149,12 @@ body {
   margin: 15px 25px;
   /* align-items: flex-start; */
   position: relative;
-  border-bottom: 1px solid #85a389;
+  border-bottom: 1px solid var(--hover);
 }
 
 .task-box {
   text-align: center;
-  border-bottom: 1.5px solid #85a389;
+  border-bottom: 1.5px solid var(--hover);
 }
 
 .task-box {
@@ -157,17 +164,17 @@ body {
 
 .task-box::-webkit-scrollbar {
   width: 6px;
-} 
+}
 
 .task-box::-webkit-scrollbar-track {
-  background: #85a389;
+  background: var(--border);
   border-radius: 55px;
-} 
+}
 
 .task-box::-webkit-scrollbar-thumb {
   background: #edc6b189;
   border-radius: 55px;
-} 
+}
 
 .task label {
   display: flex;
@@ -181,7 +188,6 @@ body {
   margin-right: 12px;
   width: 18px;
   height: 18px;
-  
 }
 
 .task-box .task:last-child {
@@ -190,14 +196,13 @@ body {
   border-bottom: 0;
 }
 
-.task label p {
+.task p {
   user-select: none;
   word-wrap: break-word;
-  color: #fff8de;
+  color: var(--text);
 }
 
 .task-menu {
-  border: 1px solid red;
   display: none;
   list-style: none;
   position: absolute;
@@ -209,7 +214,7 @@ body {
   background: hsla(21, 63%, 81%, 0.318);
   transform-origin: top right;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.285);
-  transition: transform 0.2s ease; 
+  transition: transform 0.2s ease;
 }
 
 .task-menu li {
@@ -224,8 +229,8 @@ body {
 }
 
 .task-menu li:hover {
-  color: #edc6b1;
-} 
+  color: var(--text);
+}
 
 .select {
   margin-left: auto;
@@ -237,7 +242,7 @@ body {
 }
 
 .select :where(i, li) {
-  color: #fff8de;
+  color: var(--text);
   cursor: pointer;
 }
 
@@ -268,16 +273,16 @@ body {
   display: flex;
   align-items: center;
   margin: 0 30px;
-} 
+}
 
 .form span {
   padding: 10px 10px;
-  color: #fff8de;
+  color: var(--text);
   cursor: pointer;
-} 
+}
 
 footer {
-  color: #7c9070;
+  color: var(--hover);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -291,4 +296,11 @@ footer p {
 footer a {
   color: #fff8de89;
   text-decoration: none;
-}  
+}
+
+#themeBtn {
+  border: none;
+  background-color: #3c5d4500;
+  cursor: pointer;
+  color: var(--hover);
+}
