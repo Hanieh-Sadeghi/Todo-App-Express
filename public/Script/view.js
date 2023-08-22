@@ -3,6 +3,10 @@ const addTasks = document.getElementById("add-btn");
 const listEl = document.querySelector(".task-box");
 const deleteAllBtn = document.getElementById("clearBtn");
 const input = document.getElementById("todoInput");
+const all = document.getElementById("all");
+const active = document.getElementById("active");
+const completed = document.getElementById("completed");
+
 
 filters = document.querySelectorAll(".header span");
 
@@ -20,9 +24,10 @@ function loadTasks() {
 
 filters.forEach((btn) => {
   btn.addEventListener("click", () => {
-    console.log(btn);
+    const filterType = btn.id.toLowerCase();
     document.querySelector("span.active").classList.remove("active");
     btn.classList.add("active");
+    filterTasks(filterType);
   });
 });
 
@@ -30,7 +35,6 @@ filters.forEach((btn) => {
 function createTaskElement(taskText, id, edit) {
   const newTask = document.createElement("li");
   newTask.classList.add("task");
-
   newTask.id = `task-${id}`;
   newTask.innerHTML = `
     <label>
@@ -42,7 +46,8 @@ function createTaskElement(taskText, id, edit) {
     </div>
     <ul class="task-menu">
       <li onclick="editTask('${id}')"><i class="uil uil-pen"></i>${
-    edit ? "Save" : "Edit"}</li>
+    edit ? "Save" : "Edit"
+  }</li>
       <li onclick ='deleteTask(${id})'><i class="uil uil-trash"></i>Delete</li>
     </ul> `;
   listEl.appendChild(newTask);
@@ -90,7 +95,6 @@ function handleCheckboxChange(event) {
 }
 
 listEl.addEventListener("change", handleCheckboxChange);
-
 
 // Event listener for loading tasks
 window.addEventListener("load", loadTasks);
@@ -155,4 +159,19 @@ function editTask(editId) {
   // console.log(selectedText)
   localStorage.setItem("tasks", JSON.stringify(tasks));
   loadTasks();
+}
+
+function filterTasks(filterType) {
+  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  listEl.innerHTML = "";
+
+  tasks.forEach((task) => {
+    if (
+      filterType === "all" ||
+      (filterType === "active" && !task.active) ||
+      (filterType === "completed" && task.completed)
+    ) {
+      createTaskElement(task.text, task.id, task.edit);
+    }
+  });
 }

@@ -21,8 +21,8 @@
 [data-theme=Snow] {
   --border: #2D4356;
   --img: url(/public/Img/mountains.jpg);
-  --text: #EAB2A0;
-  --hover: #A76F6F;
+  --text: #f2dede;
+  --hover: #905353;
 }
 
 [data-theme=jungl] {
