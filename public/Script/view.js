@@ -7,7 +7,6 @@ const all = document.getElementById("all");
 const active = document.getElementById("active");
 const completed = document.getElementById("completed");
 
-
 filters = document.querySelectorAll(".header span");
 
 let TaskId;
@@ -64,7 +63,7 @@ function addNewTask() {
 }
 
 // Save tasks to local storage
-function saveTasksToLocalStorage(taskText) {
+function saveTasksToLocalStoragactivee(taskText) {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   tasks.push({
     text: taskText,
@@ -161,6 +160,7 @@ function editTask(editId) {
   loadTasks();
 }
 
+// filterTasks completed active
 function filterTasks(filterType) {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   listEl.innerHTML = "";
@@ -168,9 +168,12 @@ function filterTasks(filterType) {
   tasks.forEach((task) => {
     if (
       filterType === "all" ||
-      (filterType === "active" && !task.active) ||
+      (filterType === "active" && !task.completed) ||
       (filterType === "completed" && task.completed)
     ) {
+      console.log(filterType)
+      console.log(active)
+      console.log(completed)
       createTaskElement(task.text, task.id, task.edit);
     }
   });
