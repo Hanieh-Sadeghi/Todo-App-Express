@@ -161,20 +161,22 @@ function editTask(editId) {
 }
 
 // filterTasks completed active
-function filterTasks(filterType) {
-  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  listEl.innerHTML = "";
+// function filterTasks(filterType) {
+//   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+//   listEl.innerHTML = "";
+//   // debugger;
+//   tasks.forEach((task) => {
+//     if (
+//       filterType === "all" ||
+//       (filterType === "active" && !task.completed) ||
+//       (filterType === "completed" && task.completed)
+//     ) {
+//       console.log(filterType);
+//       console.log(active);
+//       console.log(completed);
+//       createTaskElement(task.text, task.id, task.edit);
+//     }
+//     // if(){}
+//   });
 
-  tasks.forEach((task) => {
-    if (
-      filterType === "all" ||
-      (filterType === "active" && !task.completed) ||
-      (filterType === "completed" && task.completed)
-    ) {
-      console.log(filterType)
-      console.log(active)
-      console.log(completed)
-      createTaskElement(task.text, task.id, task.edit);
-    }
-  });
-}
+// }
