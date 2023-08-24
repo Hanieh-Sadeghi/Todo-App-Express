@@ -7,16 +7,20 @@ const all = document.getElementById("all");
 const active = document.getElementById("active");
 const completed = document.getElementById("completed");
 
+const taskKey = "tasks";
+let identifier = 0;
 filters = document.querySelectorAll(".header span");
 
 let TaskId;
 
 // Load tasks from local storage
 function loadTasks() {
-  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  const memory = localStorage.getItem(taskKey);
+  const tasks = JSON.parse(memory) || {};
   listEl.innerHTML = "";
-  tasks.forEach((task) => {
-    console.log(task.edit);
+  const todoList = Object.values(tasks);
+  todoList.forEach((task) => {
+    console.log(task);
     createTaskElement(task.text, task.id, task.edit);
   });
 }
@@ -63,14 +67,21 @@ function addNewTask() {
 }
 
 // Save tasks to local storage
-function saveTasksToLocalStoragactivee(taskText) {
-  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  tasks.push({
-    text: taskText,
-    id: tasks.length,
+function saveTasksToLocalStorage(input) {
+  const memory = localStorage.getItem("tasks");
+  const tasks = JSON.parse(memory) || {};
+  const keys = Object.keys(tasks);
+
+  if (keys.length !== 0 || identifier !== 0) {
+    identifier = +keys[keys.length - 1] + 1;
+  }
+  tasks[identifier] = {
+    text: input,
+    id: identifier,
     edit: false,
     completed: false,
-  });
+  };
+  ++identifier;
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
@@ -134,7 +145,7 @@ document.addEventListener("DOMContentLoaded", setupTaskMenus);
 
 // Delete Task arry
 function deleteTask(deleteId) {
-  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  const tasks = JSON.parse(localStorage.getItem(taskKey)) || {};
   const filteredTasks = tasks.filter((todo) => {
     return todo.id !== +deleteId;
   });
@@ -145,7 +156,7 @@ function deleteTask(deleteId) {
 // Edit Task
 function editTask(editId) {
   // console.log(editId, taskText);
-  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  const tasks = JSON.parse(localStorage.getItem(taskKey)) || {};
   const selectedText = document.querySelector(`li#task-${editId}`).children[1]
     .textContent;
   tasks.forEach((todo) => {
@@ -161,22 +172,20 @@ function editTask(editId) {
 }
 
 // filterTasks completed active
-// function filterTasks(filterType) {
-//   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-//   listEl.innerHTML = "";
-//   // debugger;
-//   tasks.forEach((task) => {
-//     if (
-//       filterType === "all" ||
-//       (filterType === "active" && !task.completed) ||
-//       (filterType === "completed" && task.completed)
-//     ) {
-//       console.log(filterType);
-//       console.log(active);
-//       console.log(completed);
-//       createTaskElement(task.text, task.id, task.edit);
-//     }
-//     // if(){}
-//   });
-
-// }
+function filterTasks(filterType) {
+  const tasks = JSON.parse(localStorage.getItem(taskKey)) || {};
+  listEl.innerHTML = "";
+  // debugger;
+  tasks.forEach((task) => {
+    if (
+      filterType === "all" ||
+      (filterType === "active" && !task.completed) ||
+      (filterType === "completed" && task.completed)
+    ) {
+      console.log(filterType);
+      console.log(active);
+      console.log(completed);
+      createTaskElement(task.text, task.id, task.edit);
+    }
+  });
+}
