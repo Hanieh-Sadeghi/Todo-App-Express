@@ -11,6 +11,8 @@ const taskKey = "tasks";
 let identifier = 0;
 filters = document.querySelectorAll(".header span");
 
+const tasks = [];
+
 let TaskId;
 
 // Load tasks from local storage
@@ -20,7 +22,7 @@ function loadTasks() {
   listEl.innerHTML = "";
   const todoList = Object.values(tasks);
   todoList.forEach((task) => {
-    console.log(task);
+    // console.log(task);
     createTaskElement(task.text, task.id, task.edit);
   });
 }
@@ -60,6 +62,8 @@ function createTaskElement(taskText, id, edit) {
 function addNewTask() {
   if (input.value.trim() !== "") {
     createTaskElement(input.value.trim());
+
+    saveTasksToLocalStorage(todo);
     saveTasksToLocalStorage(input.value.trim());
     loadTasks();
     input.value = "";
@@ -69,7 +73,7 @@ function addNewTask() {
 // Save tasks to local storage
 function saveTasksToLocalStorage(input) {
   const memory = localStorage.getItem("tasks");
-  const tasks = JSON.parse(memory) || {};
+  tasks = JSON.parse(memory) || {};
   const keys = Object.keys(tasks);
 
   if (keys.length !== 0 || identifier !== 0) {
@@ -132,11 +136,11 @@ function setupTaskMenus() {
 }
 
 function showMenu(taskMenu) {
-  console.log("showMenu");
+  // console.log("showMenu");
   document.addEventListener("click", (e) => {
     if (e.target.tagName !== "I" && !taskMenu.contains(e.target)) {
       taskMenu.classList.remove("show-menu");
-      console.log(taskMenu);
+      // console.log(taskMenu);
     }
   });
 }
@@ -166,26 +170,18 @@ function editTask(editId) {
     }
   });
 
-  // console.log(selectedText)
   localStorage.setItem("tasks", JSON.stringify(tasks));
   loadTasks();
 }
 
 // filterTasks completed active
-function filterTasks(filterType) {
-  const tasks = JSON.parse(localStorage.getItem(taskKey)) || {};
-  listEl.innerHTML = "";
-  // debugger;
-  tasks.forEach((task) => {
-    if (
-      filterType === "all" ||
-      (filterType === "active" && !task.completed) ||
-      (filterType === "completed" && task.completed)
-    ) {
-      console.log(filterType);
-      console.log(active);
-      console.log(completed);
-      createTaskElement(task.text, task.id, task.edit);
-    }
+function filterTasks() {
+  const memory = localStorage.getItem(taskKey);
+  let tasks = JSON.parse(memory) || {};
+  tasks = Object.values(tasks);
+  const completed = tasks.filter((item) => {
+    return item.completed == true;
   });
+
+  console.log(completed);
 }
