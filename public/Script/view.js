@@ -102,6 +102,7 @@ function handleCheckboxChange(event) {
     const textElement = checkbox.parentElement.nextElementSibling;
     if (checkbox.checked) {
       textElement.style.textDecoration = "line-through";
+      filterTasks();
     } else {
       textElement.style.textDecoration = "none";
     }
