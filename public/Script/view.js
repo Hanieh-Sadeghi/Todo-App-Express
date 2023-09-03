@@ -11,6 +11,7 @@ const taskKey = "tasks";
 let identifier = 0;
 filters = document.querySelectorAll(".header span");
 
+let filterKind = "all"
 const tasks = [];
 
 let TaskId;
@@ -21,8 +22,14 @@ function loadTasks() {
   const tasks = JSON.parse(memory) || {};
   listEl.innerHTML = "";
   const todoList = Object.values(tasks);
-  todoList.forEach((task) => {
-    // console.log(task);
+  
+  const filteredTasks = todoList.filter((task) => {
+    if (filterKind === "active") return !task.completed;
+    if (filterKind === "completed") return task.completed;
+    return true;
+  });
+
+  filteredTasks.forEach((task) => {
     createTaskElement(task.text, task.id, task.edit);
   });
 }
@@ -62,7 +69,6 @@ function createTaskElement(taskText, id, edit) {
 function addNewTask() {
   if (input.value.trim() !== "") {
     createTaskElement(input.value.trim());
-
     saveTasksToLocalStorage(todo);
     saveTasksToLocalStorage(input.value.trim());
     loadTasks();
@@ -102,7 +108,7 @@ function handleCheckboxChange(event) {
     const textElement = checkbox.parentElement.nextElementSibling;
     if (checkbox.checked) {
       textElement.style.textDecoration = "line-through";
-      filterTasks();
+      // filterTasks();
     } else {
       textElement.style.textDecoration = "none";
     }
@@ -176,13 +182,18 @@ function editTask(editId) {
 }
 
 // filterTasks completed active
-function filterTasks() {
-  const memory = localStorage.getItem(taskKey);
-  let tasks = JSON.parse(memory) || {};
-  tasks = Object.values(tasks);
-  const completed = tasks.filter((item) => {
-    return item.completed == true;
-  });
+// function filterTasks() {
+//   const memory = localStorage.getItem(taskKey);
+//   let tasks = JSON.parse(memory) || {};
+//   tasks = Object.values(tasks);
+//   const completed = tasks.filter((item) => {
+//     return item.completed == true;
+//   });
 
-  console.log(completed);
-}
+//   console.log(completed);
+//   listEl.innerHTML = "";
+//   completed.forEach((task) => {
+//     createTaskElement(task.text, task.id, task.edit);
+
+//   });
+// }
