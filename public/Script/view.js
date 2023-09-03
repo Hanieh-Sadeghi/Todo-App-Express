@@ -11,25 +11,25 @@ const taskKey = "tasks";
 let identifier = 0;
 filters = document.querySelectorAll(".header span");
 
-let filterKind = "all"
-const tasks = [];
-
+let filterKind = "all";
+// const tasks = [];
+let tasks = {};
 let TaskId;
 
 // Load tasks from local storage
 function loadTasks() {
   const memory = localStorage.getItem(taskKey);
-  const tasks = JSON.parse(memory) || {};
+  const tasksData = JSON.parse(memory) || {};
   listEl.innerHTML = "";
-  const todoList = Object.values(tasks);
-  
-  const filteredTasks = todoList.filter((task) => {
-    if (filterKind === "active") return !task.completed;
-    if (filterKind === "completed") return task.completed;
-    return true;
-  });
+  const todoList = Object.values(tasksData);
 
-  filteredTasks.forEach((task) => {
+  // const filteredTasks = todoList.filter((task) => {
+  //   if (filterKind === "active") return !task.completed;
+  //   if (filterKind === "completed") return task.completed;
+  //   return true;
+  // });
+
+  todoList.forEach((task) => {
     createTaskElement(task.text, task.id, task.edit);
   });
 }
@@ -72,13 +72,13 @@ function addNewTask() {
     saveTasksToLocalStorage(todo);
     saveTasksToLocalStorage(input.value.trim());
     loadTasks();
-    input.value = "";
   }
+  input.value = "";
 }
 
 // Save tasks to local storage
 function saveTasksToLocalStorage(input) {
-  const memory = localStorage.getItem("tasks");
+  const memory = localStorage.getItem(taskKey);
   tasks = JSON.parse(memory) || {};
   const keys = Object.keys(tasks);
 
@@ -92,7 +92,7 @@ function saveTasksToLocalStorage(input) {
     completed: false,
   };
   ++identifier;
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem(taskKey, JSON.stringify(tasks));
 }
 
 // Delete all tasks from LocalStorage and the page
@@ -105,13 +105,18 @@ function deleteAllTasks() {
 function handleCheckboxChange(event) {
   const checkbox = event.target;
   if (checkbox.type === "checkbox") {
+    const taskId = checkbox.closest("li").id.replace("task-", "");
     const textElement = checkbox.parentElement.nextElementSibling;
+    const task = tasks[taskId];
+
     if (checkbox.checked) {
       textElement.style.textDecoration = "line-through";
-      // filterTasks();
+      task.completed = true;
     } else {
       textElement.style.textDecoration = "none";
+      task.completed = false;
     }
+    localStorage.setItem(taskKey, JSON.stringify(tasks));
   }
 }
 

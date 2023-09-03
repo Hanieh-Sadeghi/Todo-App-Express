@@ -6,13 +6,13 @@
 
 [data-theme=theme-container] {
   --border: #8d9f82;
-  --img: url(/public/Img/dave.jpg);
+  --img: url(../Img/dave.jpg);
   --text: #edc6b1;
   --hover: #3c5d45e0;
 }
 
 [data-theme=canada] {
-  --img: url(/public/Img/canad.jpg);
+  --img: url(../Img/canad.jpg);
   --border: #537EC5;
   --text: #F6E9E9;
   --hover: #010038;
