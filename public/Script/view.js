@@ -30,8 +30,8 @@ completed.addEventListener("click", () => {
 // Load tasks from local storage
 function loadTasks() {
   const backup = localStorage.getItem("backup");
- 
-  const memory = (backup) ? backup : localStorage.getItem(taskKey);
+
+  const memory = backup ? backup : localStorage.getItem(taskKey);
 
   const tasksData = JSON.parse(memory) || [];
 
@@ -160,8 +160,8 @@ function handleCheckboxChange(event) {
       const found = tasks.find((task) => {
         return task.id == elemntId;
       });
-      
-      if(found){
+
+      if (found) {
         found.completed = true;
         newTask.push(found);
       }
