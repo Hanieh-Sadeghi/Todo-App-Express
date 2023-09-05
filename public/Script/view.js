@@ -29,13 +29,12 @@ completed.addEventListener("click", () => {
 
 // Load tasks from local storage
 function loadTasks() {
-  (!localStorage.getItem("backup"))
+  const backup = localStorage.getItem("backup");
  
-  const memory = 
-  //  debugger;
-    ? localStorage.getItem(taskKey)
-    : localStorage.getItem("backup");
+  const memory = (backup) ? backup : localStorage.getItem(taskKey);
+
   const tasksData = JSON.parse(memory) || [];
+
   listEl.innerHTML = "";
 
   tasksData.forEach((task) => {
@@ -100,11 +99,13 @@ function createTaskElement(taskText, id, edit, completed) {
 
 // Add a new task
 function addNewTask() {
-  if (input.value.trim() !== "") {
-    createTaskElement(input.value.trim(), identifier, false, false);
-    identifier++;
-    saveTasksToLocalStorage(input.value.trim());
+  const text = input.value.trim();
+
+  if (text) {
+    createTaskElement(text, identifier, false, false);
+    saveTasksToLocalStorage(text);
   }
+
   input.value = "";
 }
 
@@ -117,14 +118,19 @@ function saveTasksToLocalStorage(input) {
   if (keys.length !== 0 || identifier !== 0) {
     identifier = +keys[keys.length - 1] + 1;
   }
+
+  identifier;
+
   tasks.push({
     text: input,
     id: identifier,
     edit: false,
     completed: false,
   });
+
   ++identifier;
   localStorage.setItem(taskKey, JSON.stringify(tasks));
+
   return;
 }
 
@@ -154,8 +160,11 @@ function handleCheckboxChange(event) {
       const found = tasks.find((task) => {
         return task.id == elemntId;
       });
-      found.completed = true;
-      newTask.push(found);
+      
+      if(found){
+        found.completed = true;
+        newTask.push(found);
+      }
     } else {
       textElement.style.textDecoration = "none";
     }
