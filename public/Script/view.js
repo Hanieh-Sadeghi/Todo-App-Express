@@ -31,14 +31,15 @@ completed.addEventListener("click", () => {
 function loadTasks() {
   const backup = localStorage.getItem("backup");
 
-  const memory = backup ? backup : localStorage.getItem(taskKey);
+  const memory =
+    backup.length !== 0 || backup ? backup : localStorage.getItem(taskKey);
 
   const tasksData = JSON.parse(memory) || [];
 
   listEl.innerHTML = "";
 
   tasksData.forEach((task) => {
-    createTaskElement(task.text, task.id, task.completed, task.edit);
+    createTaskElement(task.text, task.id, task.edit, task.completed);
   });
 }
 
@@ -54,10 +55,11 @@ function createTaskElement(taskText, id, edit, completed) {
   const checkbox = document.createElement("input");
   checkbox.checked = completed;
   checkbox.type = "checkbox";
-  label.appendChild(checkbox);
+  newTask.appendChild(checkbox);
 
   const paragraph = document.createElement("p");
   paragraph.classList.add("text-center");
+  if (completed) paragraph.style.textDecoration = "line-through";
   paragraph.innerText = taskText;
   paragraph.contentEditable = edit;
   label.appendChild(paragraph);
@@ -87,12 +89,12 @@ function createTaskElement(taskText, id, edit, completed) {
 
   const delIcon = document.createElement("i");
   delIcon.classList.add("uil");
-  delIcon.classList.add("uil-trash");
+  delIcon.classList.add("uil-pen");
   li1.appendChild(delIcon);
 
   const editIcon = document.createElement("i");
   editIcon.classList.add("uil");
-  editIcon.classList.add("uil-pen");
+  editIcon.classList.add("uil-trash");
   li2.appendChild(editIcon);
   listEl.appendChild(newTask);
 }
@@ -137,6 +139,7 @@ function saveTasksToLocalStorage(input) {
 // Delete all tasks from LocalStorage and the page
 function deleteAllTasks() {
   localStorage.removeItem("tasks");
+  localStorage.removeItem("backup");
   listEl.innerHTML = "";
 }
 
@@ -144,7 +147,8 @@ function deleteAllTasks() {
 function handleCheckboxChange(event) {
   const checkbox = event.target;
   if (checkbox.type === "checkbox") {
-    const textElement = checkbox.parentElement.nextElementSibling;
+    const textElement = checkbox.parentElement.querySelector(".text-center");
+    console.log(textElement);
     const elemntId = checkbox.parentElement.parentElement.id.replace(
       "task-",
       ""
@@ -167,6 +171,14 @@ function handleCheckboxChange(event) {
       }
     } else {
       textElement.style.textDecoration = "none";
+      const found = tasks.find((task) => {
+        return task.id == elemntId;
+      });
+
+      if (found) {
+        found.completed = false;
+        newTask.push(found);
+      }
     }
     localStorage.setItem(taskKey, JSON.stringify(newTask));
   }
@@ -217,14 +229,18 @@ function deleteTask(deleteId) {
     return todo.id !== +deleteId;
   });
   localStorage.setItem("tasks", JSON.stringify(filteredTasks));
+  localStorage.setItem("backup", JSON.stringify(filteredTasks));
+
   loadTasks();
+  console.log("hi");
 }
 
 // Edit Task
 function editTask(editId) {
   const tasks = JSON.parse(localStorage.getItem(taskKey)) || [];
-  const selectedText = document.querySelector(`li#task-${editId}`).children[1]
-    .textContent;
+  const selectedText = document
+    .querySelector(`li#task-${editId}`)
+    .querySelector(".text-center").textContent;
   tasks.forEach((todo) => {
     if (todo.id === +editId) {
       todo.edit = !todo.edit;
@@ -233,7 +249,10 @@ function editTask(editId) {
   });
 
   localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem("backup", JSON.stringify(tasks));
+
   loadTasks();
+  console.log(editId);
 }
 
 // filterTasks completed active
