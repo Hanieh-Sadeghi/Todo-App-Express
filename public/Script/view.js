@@ -14,38 +14,27 @@ filters = document.querySelectorAll(".header span");
 let filterKind = "all";
 let TaskId;
 
-// all.addEventListener("click", () => {
-//   const todos = filterTasks("all");
-//   todos.forEach((todo) => {
-//     createTaskElement(todo.text, todo.id, todo.edit, todo.completed);
-//   });
-// });
-// active.addEventListener("click", () => filterTasks("active"));
-// completed.addEventListener("click", () => filterTasks("completed"));
-
 all.addEventListener("click", () => {
-  localStorage.removeItem("backup");
+  filterTasks("all");
   loadTasks();
 });
 
 active.addEventListener("click", () => {
-  const todos = filterTasks("active");
-  localStorage.setItem("backup", JSON.stringify(todos));
-  loadTasks();
+  filterTasks("active");
 });
 
 completed.addEventListener("click", () => {
-  const todos = filterTasks("completed");
-  localStorage.setItem("backup", JSON.stringify(todos));
-  loadTasks();
+  filterTasks("completed");
 });
 
 // Load tasks from local storage
 function loadTasks() {
-  const memory =
-    JSON.parse(localStorage.getItem("backup")).length === 0
-      ? localStorage.getItem(taskKey)
-      : localStorage.getItem("backup");
+  (!localStorage.getItem("backup"))
+ 
+  const memory = 
+  //  debugger;
+    ? localStorage.getItem(taskKey)
+    : localStorage.getItem("backup");
   const tasksData = JSON.parse(memory) || [];
   listEl.innerHTML = "";
 
@@ -80,8 +69,8 @@ function createTaskElement(taskText, id, edit, completed) {
 
   const icon = document.createElement("i");
   icon.classList.add("ul");
-  icon.classList.add("uil uil-ellipsis-h");
-  select.appendChild("icon");
+  icon.classList.add("uil-ellipsis-h");
+  select.appendChild(icon);
 
   const ul = document.createElement("ul");
   ul.classList.add("task-menu");
@@ -90,7 +79,7 @@ function createTaskElement(taskText, id, edit, completed) {
   const li1 = document.createElement("li");
   li1.addEventListener("click", () => editTask(`${id}`));
   li1.innerText = edit ? "save" : "edit";
-  ul.appendChild(li);
+  ul.appendChild(li1);
 
   const li2 = document.createElement("li");
   li2.addEventListener("click", () => deleteTask(`${id}`));
@@ -100,7 +89,7 @@ function createTaskElement(taskText, id, edit, completed) {
   const delIcon = document.createElement("i");
   delIcon.classList.add("uil");
   delIcon.classList.add("uil-trash");
-  li1.appendChild(newTask);
+  li1.appendChild(delIcon);
 
   const editIcon = document.createElement("i");
   editIcon.classList.add("uil");
@@ -112,10 +101,11 @@ function createTaskElement(taskText, id, edit, completed) {
 // Add a new task
 function addNewTask() {
   if (input.value.trim() !== "") {
-    createTaskElement(input.value.trim());
+    createTaskElement(input.value.trim(), identifier, false, false);
+    identifier++;
     saveTasksToLocalStorage(input.value.trim());
-    input.value = "";
   }
+  input.value = "";
 }
 
 // Save tasks to local storage
@@ -157,7 +147,7 @@ function handleCheckboxChange(event) {
     const newTask = tasks.filter((task) => {
       return task.id != elemntId;
     });
-    console.log(newTask);
+
     if (checkbox.checked) {
       textElement.style.textDecoration = "line-through";
 
@@ -218,6 +208,7 @@ function deleteTask(deleteId) {
     return todo.id !== +deleteId;
   });
   localStorage.setItem("tasks", JSON.stringify(filteredTasks));
+  loadTasks();
 }
 
 // Edit Task
@@ -251,15 +242,19 @@ function filterTasks(mosi) {
     todos = tasks.filter((task) => {
       return task.completed === false;
     });
-    return todos;
+    // return todos;
   } else if (mosi === "completed") {
     completed.classList.add("active");
     todos = tasks.filter((task) => {
       return task.completed === true;
     });
-    return todos;
+    // return todos;
   } else {
     all.classList.add("active");
-    return tasks;
+    // return tasks;
   }
+
+  listEl.innerHTML = "";
+  localStorage.setItem("backup", JSON.stringify(todos));
+  loadTasks();
 }
