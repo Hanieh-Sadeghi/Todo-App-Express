@@ -12,49 +12,100 @@ let identifier = 0;
 filters = document.querySelectorAll(".header span");
 
 let filterKind = "all";
-
 let TaskId;
 
+// all.addEventListener("click", () => {
+//   const todos = filterTasks("all");
+//   todos.forEach((todo) => {
+//     createTaskElement(todo.text, todo.id, todo.edit, todo.completed);
+//   });
+// });
+// active.addEventListener("click", () => filterTasks("active"));
+// completed.addEventListener("click", () => filterTasks("completed"));
+
 all.addEventListener("click", () => {
-  const todos = filterTasks("all");
-  todos.forEach((todo) => {
-    createTaskElement(todo.text, todo.id, todo.edit, todo.completed);
-  });
+  localStorage.removeItem("backup");
+  loadTasks();
 });
-active.addEventListener("click", () => filterTasks("active"));
-completed.addEventListener("click", () => filterTasks("completed"));
+
+active.addEventListener("click", () => {
+  const todos = filterTasks("active");
+  localStorage.setItem("backup", JSON.stringify(todos));
+  loadTasks();
+});
+
+completed.addEventListener("click", () => {
+  const todos = filterTasks("completed");
+  localStorage.setItem("backup", JSON.stringify(todos));
+  loadTasks();
+});
 
 // Load tasks from local storage
-// function loadTasks() {
-//   const memory = localStorage.getItem(taskKey);
-//   const tasksData = JSON.parse(memory) || [];
-//   listEl.innerHTML = "";
-// const todoList = Object.values(tasksData);
+function loadTasks() {
+  const memory =
+    JSON.parse(localStorage.getItem("backup")).length === 0
+      ? localStorage.getItem(taskKey)
+      : localStorage.getItem("backup");
+  const tasksData = JSON.parse(memory) || [];
+  listEl.innerHTML = "";
 
-//   tasksData.forEach((task) => {
-//     createTaskElement(task.text, task.id, task.completed);
-//   });
-// }
+  tasksData.forEach((task) => {
+    createTaskElement(task.text, task.id, task.completed, task.edit);
+  });
+}
 
 // Create a task element
-function createTaskElement(taskText, id, edit ,completed) {
+function createTaskElement(taskText, id, edit, completed) {
   const newTask = document.createElement("li");
   newTask.classList.add("task");
   newTask.id = `task-${id}`;
-  newTask.innerHTML = `
-    <label>
-    <input type="checkbox" checked=${completed}/> 
-    </label>
-    <p class="text-center" contenteditable="${edit}">${taskText}</p>
-    <div class="select">
-      <i class="uil uil-ellipsis-h"></i>
-    </div>
-    <ul class="task-menu">
-      <li onclick="editTask('${id}')"><i class="uil uil-pen"></i>${
-    edit ? "Save" : "Edit"
-  }</li>
-      <li onclick ='deleteTask(${id})'><i class="uil uil-trash"></i>Delete</li>
-    </ul> `;
+
+  const label = document.createElement("label");
+  newTask.appendChild(label);
+
+  const checkbox = document.createElement("input");
+  checkbox.checked = completed;
+  checkbox.type = "checkbox";
+  label.appendChild(checkbox);
+
+  const paragraph = document.createElement("p");
+  paragraph.classList.add("text-center");
+  paragraph.innerText = taskText;
+  paragraph.contentEditable = edit;
+  label.appendChild(paragraph);
+
+  const select = document.createElement("div");
+  select.classList.add("select");
+  newTask.appendChild(select);
+
+  const icon = document.createElement("i");
+  icon.classList.add("ul");
+  icon.classList.add("uil uil-ellipsis-h");
+  select.appendChild("icon");
+
+  const ul = document.createElement("ul");
+  ul.classList.add("task-menu");
+  newTask.appendChild(ul);
+
+  const li1 = document.createElement("li");
+  li1.addEventListener("click", () => editTask(`${id}`));
+  li1.innerText = edit ? "save" : "edit";
+  ul.appendChild(li);
+
+  const li2 = document.createElement("li");
+  li2.addEventListener("click", () => deleteTask(`${id}`));
+  li2.innerText = "delete";
+  ul.appendChild(li2);
+
+  const delIcon = document.createElement("i");
+  delIcon.classList.add("uil");
+  delIcon.classList.add("uil-trash");
+  li1.appendChild(newTask);
+
+  const editIcon = document.createElement("i");
+  editIcon.classList.add("uil");
+  editIcon.classList.add("uil-pen");
+  li2.appendChild(editIcon);
   listEl.appendChild(newTask);
 }
 
@@ -62,11 +113,9 @@ function createTaskElement(taskText, id, edit ,completed) {
 function addNewTask() {
   if (input.value.trim() !== "") {
     createTaskElement(input.value.trim());
-    // saveTasksToLocalStorage(todo);
     saveTasksToLocalStorage(input.value.trim());
-   
+    input.value = "";
   }
-  input.value = "";
 }
 
 // Save tasks to local storage
@@ -127,7 +176,7 @@ function handleCheckboxChange(event) {
 listEl.addEventListener("change", handleCheckboxChange);
 
 // Event listener for loading tasks
-// window.addEventListener("load", loadTasks);
+window.addEventListener("load", loadTasks);
 
 // Event listener for adding a new task
 addTasks.addEventListener("click", addNewTask);
@@ -152,7 +201,6 @@ function setupTaskMenus() {
 }
 
 function showMenu(taskMenu) {
-  // console.log("showMenu");
   document.addEventListener("click", (e) => {
     if (e.target.tagName !== "I" && !taskMenu.contains(e.target)) {
       taskMenu.classList.remove("show-menu");
@@ -185,6 +233,7 @@ function editTask(editId) {
   });
 
   localStorage.setItem("tasks", JSON.stringify(tasks));
+  loadTasks();
 }
 
 // filterTasks completed active
