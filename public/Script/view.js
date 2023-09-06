@@ -9,13 +9,14 @@ const completed = document.getElementById("completed");
 
 const taskKey = "tasks";
 let identifier = 0;
-filters = document.querySelectorAll(".header span");
 
 let filterKind = "all";
 let TaskId;
 
+
 all.addEventListener("click", () => {
   filterTasks("all");
+  localStorage.removeItem("backup");
   loadTasks();
 });
 
@@ -29,10 +30,13 @@ completed.addEventListener("click", () => {
 
 // Load tasks from local storage
 function loadTasks() {
+  let memory = localStorage.getItem(taskKey);
+
   const backup = localStorage.getItem("backup");
 
-  const memory =
-    backup.length !== 0 || backup ? backup : localStorage.getItem(taskKey);
+  if (backup !== null && JSON.parse(backup.length) !== 0) {
+    memory = backup;
+  }
 
   const tasksData = JSON.parse(memory) || [];
 
@@ -41,6 +45,7 @@ function loadTasks() {
   tasksData.forEach((task) => {
     createTaskElement(task.text, task.id, task.edit, task.completed);
   });
+  localStorage.removeItem('backup')
 }
 
 // Create a task element
@@ -53,7 +58,7 @@ function createTaskElement(taskText, id, edit, completed) {
   checkbox.checked = completed;
   checkbox.type = "checkbox";
   newTask.appendChild(checkbox);
-  
+
   const label = document.createElement("label");
   newTask.appendChild(label);
 
@@ -148,11 +153,8 @@ function handleCheckboxChange(event) {
   const checkbox = event.target;
   if (checkbox.type === "checkbox") {
     const textElement = checkbox.parentElement.querySelector(".text-center");
-    console.log(textElement);
-    const elemntId = checkbox.parentElement.parentElement.id.replace(
-      "task-",
-      ""
-    );
+    const elemntId = checkbox.parentElement.id.replace("task-", "");
+    console.log(elemntId);
     const tasks = JSON.parse(localStorage.getItem(taskKey)) || [];
     const newTask = tasks.filter((task) => {
       return task.id != elemntId;
