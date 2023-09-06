@@ -184,8 +184,8 @@ body {
   padding-bottom: 15px;
 }
 
-.task label input[type="checkbox"] {
-  margin-right: 12px;
+.task input[type="checkbox"] {
+  margin-left: 10px; 
   width: 18px;
   height: 18px;
 }
@@ -197,6 +197,7 @@ body {
 }
 
 .task p {
+  margin-left: 25px; 
   user-select: none;
   word-wrap: break-word;
   color: var(--text);

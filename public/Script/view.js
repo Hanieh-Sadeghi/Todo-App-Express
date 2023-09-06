@@ -49,13 +49,13 @@ function createTaskElement(taskText, id, edit, completed) {
   newTask.classList.add("task");
   newTask.id = `task-${id}`;
 
-  const label = document.createElement("label");
-  newTask.appendChild(label);
-
   const checkbox = document.createElement("input");
   checkbox.checked = completed;
   checkbox.type = "checkbox";
   newTask.appendChild(checkbox);
+  
+  const label = document.createElement("label");
+  newTask.appendChild(label);
 
   const paragraph = document.createElement("p");
   paragraph.classList.add("text-center");
