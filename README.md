@@ -9,8 +9,8 @@ Welcome to ToDo-App! Stay organized and efficient with easy task management. Add
 4. Click the "Delete" button next to a task to remove it from the list.
 
 <p>
- <img src="" width="300" height="200" />
- <img src="" width="140" height="200" />
+    <img src="./public/Img/img2/1.png" width="300" height="200" />
+    <img src="./public/Img/img2/2.png" width="140" height="200" />
 </p>
 
 ## Actions
@@ -28,8 +28,8 @@ Welcome to ToDo-App! Stay organized and efficient with easy task management. Add
 - Delete: Permanently delete a task from the list.
 
 <p>
- <img src="" height="200" />
- <img src="" width="150" height="200" />
+ <img src="./public/Img/img2/3.png" height="200" />
+ <img src="./public/Img/img2/4.png" width="150" height="200" />
 </p>
  
 ## Local Storage
@@ -37,8 +37,8 @@ Welcome to ToDo-App! Stay organized and efficient with easy task management. Add
 The app uses client-side storage to automatically store the latest state of the application. So, even if you close the tab or refresh the page, your tasks will be saved.
 
 <p>
- <img src="" width="260" height="150" />
- <img src="" width="240" height="150" />
+ <img src="./public/Img/img2/5.png" width="260" height="150" />
+ <img src="./public/Img/img2/6.png" width="240" height="150" />
 </p>
 
 ## Technologies Used
