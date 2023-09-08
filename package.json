@@ -1,0 +1,15 @@
+{
+  "name": "todo-appjavascript-and-local-storage-",
+  "version": "1.0.0",
+  "description": "Welcome to ToDo-App! Stay organized and efficient with easy task management. Add, edit, complete, or delete tasks with a breeze. Your progress is saved automatically with local storage. Happy organizing!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
