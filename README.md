@@ -51,8 +51,8 @@ The app uses client-side storage to automatically store the latest state of the 
 <h2>YouTube</h2>
 <ol>
     <li>
-     <p>link video:</p>
-      <pre><code> https://youtu.be/xnofAd5YAZg </code></pre>
+     <p>youtube video:</p>
+     [![ToDo App video](https://img.youtube.com/vi/xnofAd5YAZg/0.jpg)](https://www.youtube.com/watch?v=xnofAd5YAZg "ToDo App")
     </li>
 </ol>
 
