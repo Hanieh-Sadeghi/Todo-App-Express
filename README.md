@@ -34,7 +34,7 @@ Welcome to ToDo-App! Stay organized and efficient with easy task management. Add
  
 ## Local Storage
 
-The app uses client-side storage to automatically store the latest state of the application. So, even if you close the tab or refresh the page, your tasks will be saved.
+The app uses client-side storage to store the latest state of the application automatically. So, even if you close the tab or refresh the page, your tasks will be saved.
 
 <p>
  <img src="./public/Img/img2/5.png" width="260" height="150" />
@@ -75,7 +75,7 @@ The app uses client-side storage to automatically store the latest state of the 
 <h2>Contact</h2>
 <p>
     If you have any questions, suggestions, or feedback regarding this project,
-    please feel free to reach out:
+    Please feel free to reach out:
 </p>
 
 <p>
