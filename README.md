@@ -48,13 +48,11 @@ The app uses client-side storage to store the latest state of the application au
 - JavaScript
 - JSON
 
-<h2>YouTube</h2>
-<ol>
-    <li>
-     <p>link video:</p>
-      <pre><code> https://youtu.be/xnofAd5YAZg </code></pre>
-    </li>
-</ol>
+## YouTube
+
+- link video
+
+ [![ToDo App video](https://img.youtube.com/vi/xnofAd5YAZg/0.jpg)](https://www.youtube.com/watch?v=xnofAd5YAZg "ToDo App")
 
 <h2>Installation</h2>
 <ol>
