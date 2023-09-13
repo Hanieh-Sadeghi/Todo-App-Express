@@ -12,7 +12,6 @@ function postJson(req, res) {
     }
   });
 
-  
   res.json({
     response: "data update",
     db: db,
@@ -27,8 +26,21 @@ function putJson(req, res) {
   });
 }
 
+function deleteJson(req, res) {
+  id = req.params.id;
+  data = db.map((data) => {
+    if (data.id == id) return data;
+  });
+  db.splice(db.indexOf(data), 1);
+  res.json({
+    response: "data delet",
+    db: db,
+  });
+}
+
 module.exports = {
   getJson,
   postJson,
   putJson,
+  deleteJson,
 };
