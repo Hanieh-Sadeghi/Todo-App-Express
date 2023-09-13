@@ -153,14 +153,12 @@ body {
 }
 
 .task-box {
+  overflow: auto;
+  max-height: 330px;
   text-align: center;
   border-bottom: 1.5px solid var(--hover);
 }
 
-.task-box {
-  overflow: auto;
-  max-height: 330px;
-}
 
 .task-box::-webkit-scrollbar {
   width: 6px;
@@ -207,8 +205,9 @@ body {
   display: none;
   list-style: none;
   position: absolute;
-  height: 80px;
-  right: -10px;
+  height: 45px;
+  right: 28px;
+  top: -8px;
   z-index: 3;
   padding: 5px 0;
   border-radius: 10px;
@@ -226,7 +225,7 @@ body {
 }
 
 .task-menu.show-menu {
-  display: block;
+  display: flex;
 }
 
 .task-menu li:hover {
@@ -245,16 +244,6 @@ body {
 .select :where(i, li) {
   color: var(--text);
   cursor: pointer;
-}
-
-.task:last-child .task-menu {
-  bottom: 0;
-  transform-origin: bottom right;
-}
-
-.task:first-child .task-menu {
-  top: 30px;
-  transform-origin: top right;
 }
 
 .task-menu li:last-child {
