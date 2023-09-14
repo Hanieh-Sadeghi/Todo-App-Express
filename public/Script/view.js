@@ -7,12 +7,13 @@ const all = document.getElementById("all");
 const active = document.getElementById("active");
 const completed = document.getElementById("completed");
 
+
+
 const taskKey = "tasks";
 let identifier = 0;
 
 let filterKind = "all";
 let TaskId;
-
 
 all.addEventListener("click", () => {
   filterTasks("all");
@@ -45,7 +46,7 @@ function loadTasks() {
   tasksData.forEach((task) => {
     createTaskElement(task.text, task.id, task.edit, task.completed);
   });
-  localStorage.removeItem('backup')
+  localStorage.removeItem("backup");
 }
 
 // Create a task element
