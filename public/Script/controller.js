@@ -5,11 +5,14 @@ const upload = document.getElementById("upload");
 
 const url = "http://localhost:3000/v1/api";
 
-fetch(url).then((response) => {
-  return response.json();
+fetch(url) 
+ .then((response) => {
+   return response.json();
 });
 
 // .then((data) => {
 //   let authors = data;
 
 // })
+
+
