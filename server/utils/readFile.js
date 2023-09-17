@@ -1,3 +1,4 @@
+// In this modules, Read HTML, CSS, JavaScript code
 const fs = require('fs');
 const path = require('path');
 const address = '../../client/';
