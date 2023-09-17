@@ -7,8 +7,6 @@ const all = document.getElementById("all");
 const active = document.getElementById("active");
 const completed = document.getElementById("completed");
 
-
-
 const taskKey = "tasks";
 let identifier = 0;
 
@@ -289,3 +287,17 @@ function filterTasks(mosi) {
   localStorage.setItem("backup", JSON.stringify(todos));
   loadTasks();
 }
+
+const download = document.getElementById("download");
+const upload = document.getElementById("upload");
+
+download.addEventListener("click", (e) => {
+  // let memory = localStorage.getItem(taskKey);
+  const url = "http://localhost:3000/v1/api/todos";
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    });
+});
