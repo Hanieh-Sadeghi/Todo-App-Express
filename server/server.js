@@ -1,23 +1,11 @@
-const http = require('http');
-const controller = require('./controller');
-const routes = require('./utils/routes');
-
-const server = http.createServer();
+const express = require("express");
+const router = require("./router");
+const app = express();
 const PORT = 3000;
 
-server.on('request', (req, res) => {
+app.use(express.json())
+app.use("/v1/api", router);
 
-    routes.static(controller.staticFiles, { req, res });
-    routes.get('/todos', controller.getTodos, { req, res });
-    routes.post('/todos', controller.postTodos, { req, res });
-
-    routes.get('/signin', controller.signin, { req, res });
-    routes.post('/signin', controller.signinHandler, { req, res });
-
-    routes.get('/signup', controller.signup, { req, res });
-    routes.post('/signup', controller.signupHandler, { req, res });
-})
-
-server.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}...`)
+app.listen(3000, () => {
+  console.log(`listening pn port ${PORT}`);
 });
