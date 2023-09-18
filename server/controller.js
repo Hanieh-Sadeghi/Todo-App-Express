@@ -1,20 +1,33 @@
+const fs = require("fs");
 const db = require("./model");
 
 function getJson(req, res) {
-  res.json(db);
+  fs.readFile("todos.txt", "utf8", function (err, data) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: " error server" });
+      return;
+    }
+
+    try {
+      const jsonData = JSON.parse(data);
+      res.json(jsonData);
+    } catch (parseError) {
+      console.error(parseError);
+      res.status(500).json({ error: "error JSON" });
+    }
+  });
 }
 
 function postJson(req, res) {
-  db.forEach((data) => {
-    if (data.id == req.body.id) {
-      data.name = req.body.name;
-      data.status = req.body.status;
-    }
+  const data = JSON.stringify(req.body);
+  fs.appendFile("todos.txt", data, function (err) {
+    if (err) throw err;
+    console.log("Saved!");
   });
 
   res.json({
-    response: "data update",
-    db: db,
+    response: "Todo saved!",
   });
 }
 
@@ -26,16 +39,16 @@ function putJson(req, res) {
   });
 }
 
-function deleteJson (req , res) {
-    id = req.params.id;
-    data = db.map(data => {
-        if(data.id == id) return data
-    })
-    db.splice(db.indexOf(data) , 1)
-    res.json({
-      response: "data delete",
-      db: db,
-    })
+function deleteJson(req, res) {
+  id = req.params.id;
+  data = db.map((data) => {
+    if (data.id == id) return data;
+  });
+  db.splice(db.indexOf(data), 1);
+  res.json({
+    response: "data delete",
+    db: db,
+  });
 }
 
 module.exports = {
