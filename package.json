@@ -14,6 +14,7 @@
     "concat-map": "^0.0.1",
     "express": "^4.18.2",
     "fill-range": "^7.0.1",
+    "fs": "^0.0.1-security",
     "glob-parent": "^5.1.2",
     "has-flag": "^3.0.0",
     "ignore-by-default": "^1.0.1",
