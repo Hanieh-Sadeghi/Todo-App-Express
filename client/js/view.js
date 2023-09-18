@@ -291,13 +291,16 @@ function filterTasks(mosi) {
 const download = document.getElementById("download");
 const upload = document.getElementById("upload");
 
-download.addEventListener("click", (e) => {
+document.addEventListener("DOMContentLoaded", function () {
   // let memory = localStorage.getItem(taskKey);
-  const url = "http://localhost:3000/v1/api/todos";
+  const url = "localhost:3000/v1/api";
 
   fetch(url)
     .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-    });
+    .then(data => {
+      console.log(data)
+  })
+  
 });
+
+
