@@ -8,7 +8,6 @@ function getJson(req, res) {
       res.status(500).json({ error: " error server" });
       return;
     }
-
     try {
       const jsonData = JSON.parse(data);
       res.json(jsonData);
