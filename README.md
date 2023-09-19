@@ -28,7 +28,7 @@ Welcome to ToDo-App! Stay organized and efficient with easy task management. Add
 - Delete: Permanently delete a task from the list.
 
 <p>
- <img src="./public/Img/img2/3.png" height="200" />
+<!--  <img src="./public/Img/img2/3.png" height="200" />
  <img src="./public/Img/img2/4.png" width="150" height="200" />
 </p>
  
@@ -47,9 +47,9 @@ The app uses client-side storage to store the latest state of the application au
 - CSS
 - JavaScript
 - JSON
-
+ -->
 <h2>YouTube</h2>
-<ol>
+<!-- <ol>
     <li>
      <p>youtube video:</p>
      [![ToDo App video](https://img.youtube.com/vi/xnofAd5YAZg/0.jpg)](https://www.youtube.com/watch?v=xnofAd5YAZg "ToDo App")
@@ -60,9 +60,9 @@ The app uses client-side storage to store the latest state of the application au
 <ol>
     <li>
         <p>Clone the repository:</p>
-        <pre><code> git clone https://github.com/Hanieh-Sadeghi/ToDo-AppJavaScript-And-Local-Storage-
+        <pre><code> git clone https://github.com/Hanieh-Sadeghi/ToDo-AppJavaScript-And-Local-Storage- -->
 </code></pre>
-    </li>
+<!--     </li>
     <li><p>Open the project folder in your preferred code editor.</p></li>
     <li>
         <p>
@@ -70,7 +70,7 @@ The app uses client-side storage to store the latest state of the application au
             <code>index.html</code> file in a web browser.
         </p>
     </li>
-</ol>
+</ol> -->
 
 <h2>Contact</h2>
 <p>
