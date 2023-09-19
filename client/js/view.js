@@ -290,16 +290,45 @@ function filterTasks(mosi) {
 
 const download = document.getElementById("download");
 const upload = document.getElementById("upload");
+const url = "http://localhost:3000/v1/api";
 
-document.addEventListener("DOMContentLoaded", function () {
-  // let memory = localStorage.getItem(taskKey);
-  const url = "localhost:3000/v1/api";
-
-  fetch(url)
-    .then((response) => response.json())
-    .then(data => {
-      console.log(data)
+download.addEventListener("click", () => {
+  fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
   })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error("Error in fetch request:", error);
+    });
+});
+
+upload.addEventListener("click", () => {
+  const dataToSend = {
+    key1: "value1",
+    key2: "value2",
+  };
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(dataToSend),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error("Error in fetch request:", error);
+    });
+});
+
   
 });
 
