@@ -329,7 +329,5 @@ upload.addEventListener("click", () => {
     });
 });
 
-  
-});
 
 
