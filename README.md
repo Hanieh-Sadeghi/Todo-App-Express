@@ -12,7 +12,7 @@ Clear Tasks: With the "Clear" button, you can effortlessly remove all tasks from
 Persistence : Tasks and data are stored and managed using Express in a way that ensures they persist even after the server is shut down or restarted. This means that your tasks remain intact and accessible even if the server is closed or refreshed
 
 <p>
- <img src="./client/public/img/img2/1.png" width="250" height="150" />
+ <img src="./client/public/img/1.png" width="250" height="150" />
 </p>
 
 ## Local Storage
@@ -31,9 +31,14 @@ Download: This feature allows users to download their task list or data in JSON 
 Theme Button : The "Theme" button allows you to switch between four distinct themes, each with its own unique background and color palette. By clicking this button, you can instantly transform the visual appearance of the application to suit your preferences. 
  
 <p>
- <img src="./client/public/img/img2/1.png" width="250" height="150" />
- <img src="./client/public/img/img2/2.png" width="250" height="150" />
- <img src="./client/public/img/img2/3.png" width="250" height="150" />
- <img src="./client/public/img/img2/4.png" width="250" height="150" />
+ <img src="./client/public/img/2.png" width="250" height="150" />
+ <img src="./client/public/img/3.png" width="250" height="150" />
+ <img src="./client/public/img/4.png" width="250" height="150" />
 </p>
-
+<h2>YouTube</h2>
+<ol>
+    <li>
+     <p>youtube video:</p>
+     <pre><code>(https://www.youtube.com/watch?v=xnofAd5YAZg "ToDo App") </code></pre>
+    </li>
+</ol>
