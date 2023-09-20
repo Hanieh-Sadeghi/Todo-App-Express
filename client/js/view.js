@@ -216,7 +216,6 @@ function showMenu(taskMenu) {
   document.addEventListener("click", (e) => {
     if (e.target.tagName !== "I" && !taskMenu.contains(e.target)) {
       taskMenu.classList.remove("show-menu");
-      // console.log(taskMenu);
     }
   });
 }
@@ -292,33 +291,28 @@ const download = document.getElementById("download");
 const upload = document.getElementById("upload");
 const url = "http://localhost:3000/v1/api";
 
-download.addEventListener("click", () => {
-  fetch(url, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error("Error in fetch request:", error);
-    });
+download.addEventListener("click", async () => {
+  const response = await fetch(url);
+  const responseJson = await response.json();
+
+  if (response.ok) {
+    localStorage.setItem(taskKey, JSON.stringify(responseJson));
+
+    listEl.innerHTML = "";
+    loadTasks();
+  } else {
+    console.error(response.error)
+  }
+  
 });
 
 upload.addEventListener("click", () => {
-  const dataToSend = {
-    key1: "value1",
-    key2: "value2",
-  };
   fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(dataToSend),
+    body: localStorage.getItem(taskKey),
   })
     .then((response) => response.json())
     .then((data) => {
@@ -328,6 +322,3 @@ upload.addEventListener("click", () => {
       console.error("Error in fetch request:", error);
     });
 });
-
-
-

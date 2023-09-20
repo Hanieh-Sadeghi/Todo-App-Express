@@ -21,7 +21,8 @@ function getJson(req, res) {
 
 function postJson(req, res) {
   const data = JSON.stringify(req.body);
-  fs.appendFile("todos.txt", data, function (err) {
+  fs.writeFile("todos.txt", data, function (err) {
+
     if (err) throw err;
     console.log("Saved!");
   });
