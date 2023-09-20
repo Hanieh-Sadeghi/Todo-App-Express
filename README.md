@@ -12,7 +12,7 @@ Clear Tasks: With the "Clear" button, you can effortlessly remove all tasks from
 Persistence : Tasks and data are stored and managed using Express in a way that ensures they persist even after the server is shut down or restarted. This means that your tasks remain intact and accessible even if the server is closed or refreshed
 
 <p>
- <img src="./client/public/img/img2/1.png" width="200" height="200" />
+ <img src="./client/public/img/img2/1.png" width="350" height="300" />
 </p>
 
 ## Local Storage
