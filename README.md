@@ -30,3 +30,10 @@ Download: This feature allows users to download their task list or data in JSON 
 ## Theme 
 Theme Button : The "Theme" button allows you to switch between four distinct themes, each with its own unique background and color palette. By clicking this button, you can instantly transform the visual appearance of the application to suit your preferences. 
  
+<p>
+ <img src="./client/public/img/img2/1.png" width="250" height="150" />
+ <img src="./client/public/img/img2/2.png" width="250" height="150" />
+ <img src="./client/public/img/img2/3.png" width="250" height="150" />
+ <img src="./client/public/img/img2/4.png" width="250" height="150" />
+</p>
+
