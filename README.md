@@ -1,10 +1,10 @@
-    <h1>To Do App Express</h1>
-    <p>
+<h1>To Do App Express</h1>
+ <p>
       The ToDo application is a robust web-based server program built using the
       Express framework, designed to streamline your task management process.
-    </p>
+</p>
 
-    <h2>Key Features</h2>
+<h2>Key Features</h2>
     <h3>Add Tasks</h3>
     <ul>
       <li>
@@ -39,7 +39,7 @@
       </li>
     </ul>
 
-    <h3>Persistence</h3>
+<h3>Persistence</h3>
     <ul>
       <li>
         Rest easy knowing that your tasks and data are securely stored and
@@ -96,7 +96,7 @@
       </li>
     </ul>
 
-    <p align="center">
+<p align="center">
       <img src="./client/public/img/1.png" width="250" height="150" />
       <img src="./client/public/img/2.png" width="250" height="150" />
       <img src="./client/public/img/3.png" width="250" height="150" />
@@ -115,4 +115,3 @@
       Experience efficient and organized task management with the ToDo App
       Express. Your tasks, your way.
     </p>
-    
