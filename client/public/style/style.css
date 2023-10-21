@@ -81,7 +81,7 @@ body {
 #task-input input:focus,
 #task-input input.active {
   border: 2px solid var(--border);
-}
+} 
 
 #task-input input::placeholder {
   color: var(--border);
