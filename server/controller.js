@@ -8,7 +8,7 @@ function getJson(req, res) {
       res.status(500).json({ error: " error server" });
       return;
     }
-    
+
     try {
       const jsonData = JSON.parse(data);
       res.json(jsonData);
@@ -22,7 +22,6 @@ function getJson(req, res) {
 function postJson(req, res) {
   const data = JSON.stringify(req.body);
   fs.writeFile("todos.txt", data, function (err) {
-
     if (err) throw err;
     console.log("Saved!");
   });
@@ -52,9 +51,27 @@ function deleteJson(req, res) {
   });
 }
 
+function signup(req, res) {
+  let user = req.body;
+  user.token = "";
+  user.data = [
+    {
+      id: 1,
+      db: db,
+    },
+  ];
+
+  db.push(user);
+  res.json({
+    response: "singup success",
+    user: user,
+  });
+}
+
 module.exports = {
   getJson,
   postJson,
   putJson,
   deleteJson,
+  signup,
 };
