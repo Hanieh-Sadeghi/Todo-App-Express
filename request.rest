@@ -1,0 +1,23 @@
+GET http://localhost:300/user 
+
+
+###
+
+POST http://localhost:300/user 
+Content-Type: application/json
+
+{
+    "name" : "kyle" ,
+    "password" : "password"
+}
+
+###
+
+POST http://localhost:300/user/login
+Content-Type: application/json
+
+{
+    "name" : "kyle" ,
+    "password" : "password"
+}
+
