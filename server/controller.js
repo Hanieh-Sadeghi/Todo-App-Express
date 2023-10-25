@@ -68,21 +68,21 @@ function signup(req, res) {
   });
 }
 
-function Login(req, res) {
-  db.forEach((user) => {
-    if (
-      user.username === req.body.username &&
-      user.password === req.body.password
-    ) {
-      const token = createToken(60);
-      user.token = "token";
-      res.json({
-        response: "login success",
-        token: token,
-      });
-    }
-  });
-}
+// function Login(req, res) {
+//   db.forEach((user) => {
+//     if (
+//       user.username === req.body.username &&
+//       user.password === req.body.password
+//     ) {
+//       const token = createToken(60);
+//       user.token = "token";
+//       res.json({
+//         response: "login success",
+//         token: token,
+//       });
+//     }
+//   });
+// }
 
 function createToken() {
    var result = '' ;
