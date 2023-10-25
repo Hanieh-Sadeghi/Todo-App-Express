@@ -4,6 +4,7 @@
   "description": "Welcome to ToDo-App! Stay organized and efficient with easy task management. Add, edit, complete, or delete tasks with a breeze. Your progress is saved automatically with local storage. Happy organizing!",
   "main": "index.js",
   "dependencies": {
+    "devStart" : "nodemon server.js" ,
     "abbrev": "^1.1.1",
     "anymatch": "^3.1.3",
     "balanced-match": "^1.0.2",
@@ -25,7 +26,6 @@
     "is-number": "^7.0.0",
     "lru-cache": "^6.0.0",
     "minimatch": "^3.1.2",
-    "nodemon": "^3.0.1",
     "nopt": "^1.0.10",
     "normalize-path": "^3.0.0",
     "picomatch": "^2.3.1",
@@ -44,5 +44,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
